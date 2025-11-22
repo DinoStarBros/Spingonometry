@@ -5,13 +5,22 @@ var num_fall_txt_scn : PackedScene = preload("res://effects_juices/title_numbers
 func _ready() -> void:
 	SceneManager.fade_in()
 	%numFallSpawnTimer.timeout.connect(_numfall_timer_timeout)
+	
+	
+	%play.pressed.connect(_on_play_pressed)
+	%how2play.pressed.connect(_how2play_pressed)
+	%quit.pressed.connect(_on_quit_pressed)
 
 func _on_play_pressed() -> void:
 	#Global.change_scene("res://screens/spingonometry/spingonometry.tscn")
 	Global.change_scene("res://screens/spingonometry/spingonometry.tscn")
 
+func _how2play_pressed() -> void:
+	pass
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
 
 func _numfall_timer_timeout() -> void:
 	for n in randi_range(1, 3):

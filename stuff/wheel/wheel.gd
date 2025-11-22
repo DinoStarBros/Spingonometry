@@ -12,6 +12,7 @@ var problem_scn_str : String
 func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	%fateSelected.stop()
+	
 
 func start_spin() -> void:
 	if not spinning and rot_vel <= 10:
@@ -21,7 +22,7 @@ func start_spin() -> void:
 		%startDecelerateTimer.start(randf_range(0.7,1.2))
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("space"):
+	if Input.is_action_just_pressed("spin"):
 		start_spin()
 	
 	if Input.is_action_just_pressed("Enter") and fate_accepted:
@@ -91,7 +92,8 @@ func determine_fate() -> void:
 		problem_scn_str = GScnRef.screen["f5"]
 		
 	elif wheel.rotation_degrees > quadrants[5].x and wheel.rotation_degrees < quadrants[5].y:
-		debug_txt.text = "6. Find the inverse trigonometric function value (e.g. arcsin(1))"
+		debug_txt.text = "6. Find the inverse trigonometric function value 
+		(e.g. arcsin(1)=?)"
 		problem_scn_str = GScnRef.screen["f6"]
 
 var click_just_played : bool = false

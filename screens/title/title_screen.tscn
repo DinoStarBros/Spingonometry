@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnfvwms7vr54u"]
+[gd_scene load_steps=16 format=3 uid="uid://dnfvwms7vr54u"]
 
 [ext_resource type="Script" uid="uid://b7orn1bvbjo2k" path="res://screens/title/title_screen.gd" id="1_a0lyr"]
 [ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_7rk1i"]
@@ -17,6 +17,21 @@ anti_aliasing = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rk1i"]
 content_margin_bottom = 4.0
 bg_color = Color(0.9999998, 0.14295253, 0.10145304, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k1ey"]
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.63127697, 0.19370607, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le681"]
+content_margin_bottom = 4.0
+bg_color = Color(8.663535e-07, 0.35244143, 0.09171607, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2ied"]
+content_margin_bottom = 4.0
+bg_color = Color(5.8719515e-06, 0.7648428, 0.2402178, 1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6usmv"]
@@ -71,23 +86,23 @@ script = ExtResource("1_a0lyr")
 
 [node name="buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = 247.0
-offset_right = 1.0
-offset_bottom = 371.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -494.0
+offset_bottom = -309.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 10
 
 [node name="play" type="Button" parent="buttons"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 50
@@ -96,7 +111,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_42e70")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7rk1i")
 text = "   Play   "
 
+[node name="how2play" type="Button" parent="buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_1k1ey")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_le681")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o2ied")
+text = "How to play"
+
 [node name="quit" type="Button" parent="buttons"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 50
@@ -114,10 +140,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -494.5
-offset_top = -100.5
-offset_right = 494.5
-offset_bottom = 100.5
+offset_left = -494.0
+offset_top = -347.0
+offset_right = 495.0
+offset_bottom = -146.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 200
@@ -162,9 +188,6 @@ autostart = true
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_7rk1i")
-volume_db = -15.0
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
-
-[connection signal="pressed" from="buttons/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]

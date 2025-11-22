@@ -1,20 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds6nmoxh8prgt"]
+[gd_scene load_steps=10 format=3 uid="uid://ds6nmoxh8prgt"]
 
 [ext_resource type="Script" uid="uid://dws8cegxai07w" path="res://screens/spingonometry/spingonometry.gd" id="1_jy4mf"]
+[ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="3_g81br"]
 [ext_resource type="PackedScene" uid="uid://md4y0xd4jcq6" path="res://stuff/wheel/wheel.tscn" id="3_m6f1x"]
+[ext_resource type="AudioStream" uid="uid://dot5mpa7nqpj7" path="res://Audio/planemusic/CardTowerMenu.wav" id="4_m6f1x"]
 
-[node name="spingonometry" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6f1x"]
+bg_color = Color(0.9924428, 0, 0.11929154, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2siu"]
+bg_color = Color(0.6797177, 0, 0.06600781, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rnd7"]
+bg_color = Color(0.99994475, 0.42303133, 0.38035807, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogyxe"]
+bg_color = Color(0.6797177, 0, 0.06600781, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g81br"]
+shader = ExtResource("3_g81br")
+shader_parameter/spin_rotation_speed = 2.0
+shader_parameter/move_speed = 7.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.81253684, 0.35196674, 0.10389296, 1)
+shader_parameter/colour_2 = Color(0, 0.42, 0.706, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.095
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = false
+
+[node name="spingonometry" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_jy4mf")
 
 [node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Esc to quit"
 
 [node name="wheel" parent="." instance=ExtResource("3_m6f1x")]
+unique_name_in_owner = true
 position = Vector2(361, 569)
 
 [node name="force_fates_buttons" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 116.0
 offset_top = 949.0
 offset_right = 926.0
@@ -28,6 +66,10 @@ text = "Force Fates:"
 [node name="1" type="Button" parent="force_fates_buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_m6f1x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n2siu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rnd7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ogyxe")
 text = "1. Ratio"
 
 [node name="2" type="Button" parent="force_fates_buttons"]
@@ -54,3 +96,20 @@ text = "5. Find Length"
 unique_name_in_owner = true
 layout_mode = 2
 text = "6. Inverse Trig"
+
+[node name="balatro_bg" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_g81br")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m6f1x")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

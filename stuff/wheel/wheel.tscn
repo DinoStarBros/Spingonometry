@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://md4y0xd4jcq6"]
+[gd_scene load_steps=10 format=3 uid="uid://md4y0xd4jcq6"]
 
 [ext_resource type="Script" uid="uid://cfpay0e0d8diw" path="res://stuff/wheel/wheel.gd" id="1_6uonh"]
 [ext_resource type="Texture2D" uid="uid://cwefwfcistj05" path="res://Art/Stuff2/heart_javelin.png" id="3_l6a76"]
@@ -6,14 +6,38 @@
 [ext_resource type="AudioStream" uid="uid://1ch63fbrbyjn" path="res://Audio/goodresult-82807.mp3" id="5_diyo3"]
 [ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/proc_wheel.gd" id="5_ltls0"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_diyo3"]
+font_size = 90
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltls0"]
+font_size = 50
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cjt4m"]
+font_size = 100
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltls0"]
+radius = 323.65
+
 [node name="wheel" type="Node2D"]
 script = ExtResource("1_6uonh")
 
-[node name="proc_wheel" type="Node2D" parent="."]
+[node name="shadow_wheel" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
 scale = Vector2(1.6, 1.6)
+script = ExtResource("5_ltls0")
 
 [node name="wheel" type="Node2D" parent="."]
 unique_name_in_owner = true
+z_index = 2
 scale = Vector2(1.55, 1.55)
 script = ExtResource("5_ltls0")
 
@@ -106,6 +130,8 @@ scale = Vector2(0.5, 0.5)
 text = "Fate 6"
 
 [node name="pointer" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
 position = Vector2(400, 0)
 scale = Vector2(3, 3)
 texture = ExtResource("3_l6a76")
@@ -116,28 +142,44 @@ unique_name_in_owner = true
 
 [node name="debug_txt" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = -351.0
-offset_top = -512.0
-offset_right = 109.0
-offset_bottom = -489.0
-scale = Vector2(3.87621, 3.2762)
-text = "Find the inverse trigonometric function value (e.g. arcsin(1))"
+offset_left = -344.0
+offset_top = -562.0
+offset_right = 1756.0
+offset_bottom = -461.0
+text = "Click the wheel to spin!"
+label_settings = SubResource("LabelSettings_diyo3")
+
+[node name="big_text_bg" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+offset_left = -445.0
+offset_top = -574.0
+offset_right = 2027.0
+offset_bottom = -375.0
+color = Color(0.28729492, 0.28729492, 0.2872949, 1)
+
+[node name="big_text_bg_shadow" type="ColorRect" parent="big_text_bg"]
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 2479.0
+offset_bottom = 205.0
+color = Color(0, 0, 0, 1)
 
 [node name="accept_fate" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(1166, -145)
-scale = Vector2(5.33803, 5.56034)
+position = Vector2(551, -304)
 
 [node name="Label" type="Label" parent="accept_fate"]
-offset_left = -112.401
-offset_top = -7.91316
-offset_right = 26.5989
-offset_bottom = 67.0868
-scale = Vector2(0.840434, 0.877921)
-text = "Accept Fate?
-Press Enter to
-go to the problem"
+offset_left = -78.0
+offset_top = 52.99999
+offset_right = 847.0
+offset_bottom = 509.0
+text = "Accept Fate?"
+label_settings = SubResource("LabelSettings_ltls0")
+horizontal_alignment = 1
 
 [node name="spinClick" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -150,5 +192,36 @@ unique_name_in_owner = true
 stream = ExtResource("5_diyo3")
 pitch_scale = 1.2
 bus = &"SFX"
+
+[node name="point_arrow" type="Label" parent="."]
+offset_left = 328.0
+offset_top = -62.0
+offset_right = 395.0
+offset_bottom = 39.0
+text = "<<"
+label_settings = SubResource("LabelSettings_cjt4m")
+
+[node name="pa_bg" type="ColorRect" parent="point_arrow"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -7.0
+offset_top = 33.0
+offset_right = 73.0
+offset_bottom = 93.0
+color = Color(0.28729492, 0.28729492, 0.2872949, 1)
+
+[node name="pa_bg_shadow" type="ColorRect" parent="point_arrow/pa_bg"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 82.0
+offset_bottom = 62.0
+color = Color(0, 0, 0, 1)
+
+[node name="clickWheel" type="TouchScreenButton" parent="."]
+z_index = 4
+shape = SubResource("CircleShape2D_ltls0")
+action = "spin"
 
 [connection signal="timeout" from="startDecelerateTimer" to="." method="_on_start_decelerate_timer_timeout"]

@@ -1,4 +1,3 @@
-
 shader_type canvas_item;
 //took it directly from balatro source code
 //buy balatro now: https://www.playbalatro.com

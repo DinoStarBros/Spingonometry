@@ -1,8 +1,8 @@
 extends Node2D
 
 var question_index : int = 0
-var ranodm_questions : Array[String] =[
-	"sin2 + cos2 = 2",
+var ranodm_questions : Array[String] = [
+	"sin² + cos² = ",
 	"tan = sin / cos",
 	"csc = 1 / cos",
 	"csc = 1 / sin"

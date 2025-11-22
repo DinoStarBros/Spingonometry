@@ -17,7 +17,7 @@ var answers : Array[String] = [
 func _ready() -> void:
 	question_index = randi_range(0,2)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	%question.text = rand_questions[question_index]
 	%answer.text = answers[question_index]
 	
