@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://md4y0xd4jcq6"]
+[gd_scene load_steps=12 format=3 uid="uid://md4y0xd4jcq6"]
 
 [ext_resource type="Script" uid="uid://cfpay0e0d8diw" path="res://stuff/wheel/wheel.gd" id="1_6uonh"]
 [ext_resource type="Texture2D" uid="uid://cwefwfcistj05" path="res://Art/Stuff2/heart_javelin.png" id="3_l6a76"]
@@ -13,10 +13,19 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(10, 10)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ltls0"]
-font_size = 50
+font_size = 75
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(10, 10)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltls0"]
+size = Vector2(325, 175)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7fpuo"]
+font_size = 75
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cjt4m"]
 font_size = 100
@@ -177,9 +186,43 @@ offset_left = -78.0
 offset_top = 52.99999
 offset_right = 847.0
 offset_bottom = 509.0
-text = "Accept Fate?"
+text = "Accept fate?
+Or roll again?"
 label_settings = SubResource("LabelSettings_ltls0")
 horizontal_alignment = 1
+
+[node name="proceed_button" type="TouchScreenButton" parent="accept_fate"]
+position = Vector2(381, 329)
+shape = SubResource("RectangleShape2D_ltls0")
+action = "accept_fate"
+
+[node name="pbtxt" type="Label" parent="accept_fate/proceed_button"]
+offset_left = -152.0
+offset_top = -80.0
+offset_right = 152.0
+offset_bottom = 75.0
+text = "Proceed to
+question"
+label_settings = SubResource("LabelSettings_7fpuo")
+horizontal_alignment = 1
+
+[node name="pa_bg" type="ColorRect" parent="accept_fate/proceed_button/pbtxt"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 311.0
+offset_bottom = 164.0
+color = Color(0.28729492, 0.28729492, 0.2872949, 1)
+
+[node name="pa_bg_shadow" type="ColorRect" parent="accept_fate/proceed_button/pbtxt/pa_bg"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 324.0
+offset_bottom = 175.0
+color = Color(0, 0, 0, 1)
 
 [node name="spinClick" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

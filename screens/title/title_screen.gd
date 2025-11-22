@@ -21,7 +21,6 @@ func _how2play_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
-
 func _numfall_timer_timeout() -> void:
 	for n in randi_range(1, 3):
 		spawn_num_fall_txt()

@@ -9,10 +9,11 @@ var problem_scn_str : String
 @onready var wheel: Node2D = %wheel
 @onready var debug_txt: Label = %debug_txt
 
+var scene_just_started : bool = true
+
 func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	%fateSelected.stop()
-	
 
 func start_spin() -> void:
 	if not spinning and rot_vel <= 10:
@@ -24,11 +25,19 @@ func start_spin() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("spin"):
 		start_spin()
+		scene_just_started = false
 	
-	if Input.is_action_just_pressed("Enter") and fate_accepted:
+	if Input.is_action_just_pressed("accept_fate") and fate_accepted:
 		Global.change_scene(problem_scn_str)
 
 func _process(delta: float) -> void:
+	print(scene_just_started)
+	
+	if not scene_just_started:
+		%accept_fate.visible = fate_accepted
+	else:
+		%accept_fate.visible = false
+	
 	_click_sound_handle()
 	
 	_rotate_delta(delta)
@@ -41,7 +50,7 @@ func _process(delta: float) -> void:
 	if not spinning:
 		rot_vel = lerp(rot_vel, 0.0, 1.2 * delta)
 	
-	%accept_fate.visible = fate_accepted
+	#%accept_fate.visible = fate_accepted
 	debug_txt.visible = fate_accepted
 
 func _rotate_delta(delta:float) -> void:
