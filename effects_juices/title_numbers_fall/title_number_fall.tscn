@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://brm0yd4cyutlx"]
+
+[ext_resource type="Script" uid="uid://cn7kmw4dlffk3" path="res://effects_juices/title_numbers_fall/title_number_fall.gd" id="1_oh0lt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oh0lt"]
+resource_local_to_scene = true
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="title_number_fall" type="Node2D"]
+z_index = -3
+script = ExtResource("1_oh0lt")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 23.0
+offset_bottom = 30.0
+text = "10"
+label_settings = SubResource("LabelSettings_oh0lt")
+
+[node name="lifeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+autostart = true

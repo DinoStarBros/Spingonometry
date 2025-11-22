@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cup2cqcplpusr"]
+
+[ext_resource type="Script" uid="uid://b11csaxyjouer" path="res://screens/inverse_trig/inverse_trig.gd" id="1_fgxvt"]
+
+[node name="inverse_trig" type="Node2D"]
+script = ExtResource("1_fgxvt")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.6473, 2.42623)
+text = "6. Inverse Trigonometric Function"
+
+[node name="question" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 200.0
+offset_top = 160.0
+offset_right = 544.0
+offset_bottom = 183.0
+scale = Vector2(3.48499, 8.63761)
+text = "arcsin(1)"
+
+[node name="answer" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 337.0
+offset_top = 458.0
+offset_right = 681.0
+offset_bottom = 481.0
+scale = Vector2(3.13717, 6.66891)
+text = "90"

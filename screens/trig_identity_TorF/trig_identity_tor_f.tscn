@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkumihltrmexd"]
+
+[ext_resource type="Script" uid="uid://bbocfr78krafn" path="res://screens/trig_identity_TorF/trig_identity_tor_f.gd" id="1_nutfs"]
+
+[node name="trig_identity_TorF" type="Node2D"]
+script = ExtResource("1_nutfs")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(2.27456, 3.6394)
+text = "3. True or False: Is this trigonometric identity real?"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1566.0
+offset_top = 21.0
+offset_right = 1936.0
+offset_bottom = 44.0
+scale = Vector2(2.27456, 3.6394)
+text = "Esc if done to quit"
+
+[node name="question" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 399.0
+offset_top = 202.0
+offset_right = 769.0
+offset_bottom = 225.0
+scale = Vector2(3.04107, 6.78409)
+text = "tan = sin / cos"
+
+[node name="answer" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 601.0
+offset_top = 532.0
+offset_right = 971.0
+offset_bottom = 555.0
+scale = Vector2(2.62898, 6.51656)
+text = "true"

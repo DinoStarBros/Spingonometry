@@ -1,0 +1,154 @@
+[gd_scene load_steps=6 format=3 uid="uid://md4y0xd4jcq6"]
+
+[ext_resource type="Script" uid="uid://cfpay0e0d8diw" path="res://stuff/wheel/wheel.gd" id="1_6uonh"]
+[ext_resource type="Texture2D" uid="uid://cwefwfcistj05" path="res://Art/Stuff2/heart_javelin.png" id="3_l6a76"]
+[ext_resource type="AudioStream" uid="uid://dtq0aduiy7nn4" path="res://Audio/gunshot.wav" id="4_fwm1w"]
+[ext_resource type="AudioStream" uid="uid://1ch63fbrbyjn" path="res://Audio/goodresult-82807.mp3" id="5_diyo3"]
+[ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/proc_wheel.gd" id="5_ltls0"]
+
+[node name="wheel" type="Node2D"]
+script = ExtResource("1_6uonh")
+
+[node name="proc_wheel" type="Node2D" parent="."]
+scale = Vector2(1.6, 1.6)
+
+[node name="wheel" type="Node2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.55, 1.55)
+script = ExtResource("5_ltls0")
+
+[node name="l1" type="Line2D" parent="wheel"]
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel/l1"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Fate 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="l2" type="Line2D" parent="wheel"]
+rotation = 1.0472
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel/l2"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Fate 2"
+metadata/_edit_use_anchors_ = true
+
+[node name="l3" type="Line2D" parent="wheel"]
+rotation = 2.0944
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel/l3"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Fate 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="l4" type="Line2D" parent="wheel"]
+rotation = 3.14159
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel/l4"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Fate 4"
+metadata/_edit_use_anchors_ = true
+
+[node name="l5" type="Line2D" parent="wheel"]
+rotation = -2.0943954
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel/l5"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Fate 5"
+metadata/_edit_use_anchors_ = true
+
+[node name="l6" type="Line2D" parent="wheel"]
+rotation = -1.0471953
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel/l6"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Fate 6"
+
+[node name="pointer" type="Sprite2D" parent="."]
+position = Vector2(400, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("3_l6a76")
+flip_h = true
+
+[node name="startDecelerateTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="debug_txt" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -351.0
+offset_top = -512.0
+offset_right = 109.0
+offset_bottom = -489.0
+scale = Vector2(3.87621, 3.2762)
+text = "Find the inverse trigonometric function value (e.g. arcsin(1))"
+
+[node name="accept_fate" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1166, -145)
+scale = Vector2(5.33803, 5.56034)
+
+[node name="Label" type="Label" parent="accept_fate"]
+offset_left = -112.401
+offset_top = -7.91316
+offset_right = 26.5989
+offset_bottom = 67.0868
+scale = Vector2(0.840434, 0.877921)
+text = "Accept Fate?
+Press Enter to
+go to the problem"
+
+[node name="spinClick" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_fwm1w")
+pitch_scale = 4.0
+bus = &"SFX"
+
+[node name="fateSelected" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_diyo3")
+pitch_scale = 1.2
+bus = &"SFX"
+
+[connection signal="timeout" from="startDecelerateTimer" to="." method="_on_start_decelerate_timer_timeout"]

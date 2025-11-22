@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwthej72y2i37"]
+
+[ext_resource type="Script" uid="uid://0l725bctdebb" path="res://screens/find_missing_side_length/find_missing_side_length.gd" id="1_joydf"]
+
+[node name="find_missing_side_length" type="Node2D"]
+script = ExtResource("1_joydf")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.37678, 2.11111)
+text = "5. Find the Missing Side Length"
+
+[node name="question" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 200.0
+offset_top = 160.0
+offset_right = 544.0
+offset_bottom = 183.0
+scale = Vector2(3.48499, 8.63761)
+text = "? = O / H"
+
+[node name="answer" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 337.0
+offset_top = 458.0
+offset_right = 681.0
+offset_bottom = 481.0
+scale = Vector2(3.13717, 6.66891)
+text = "Cotangent"
+
+[node name="45" type="Line2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(865, 603)
+scale = Vector2(3, 3)
+points = PackedVector2Array(0, 0, 100, 0, 100, -100, 0, 0)
+
+[node name="45angle1" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 21.0
+offset_top = -24.0
+offset_right = 61.0
+offset_bottom = -1.0
+text = "45"
+
+[node name="45angle2" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 74.0
+offset_top = -71.3333
+offset_right = 114.0
+offset_bottom = -48.3333
+text = "45"
+
+[node name="45sidec" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 16.3333
+offset_top = -68.3333
+offset_right = 56.3333
+offset_bottom = -45.3333
+text = "10"
+
+[node name="45sidea" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 25.3333
+offset_right = 65.3333
+offset_bottom = 23.0
+text = "10"
+
+[node name="45sideb" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 108.0
+offset_top = -42.6667
+offset_right = 148.0
+offset_bottom = -19.6667
+text = "10"

@@ -1,0 +1,131 @@
+[gd_scene load_steps=2 format=3 uid="uid://dihsxmdqb1phg"]
+
+[ext_resource type="Script" uid="uid://7elusiiph5w2" path="res://screens/find_missing_angle/find_missing_angle.gd" id="1_723o7"]
+
+[node name="find_missing_angle" type="Node2D"]
+script = ExtResource("1_723o7")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(3.22241, 3.71468)
+text = "2. Find the Missing Angle
+* not drawn to scale"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1459.0
+offset_top = 32.0
+offset_right = 1650.0
+offset_bottom = 55.0
+scale = Vector2(3.22241, 3.71468)
+text = "Esc if done to quit"
+
+[node name="question" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 184.0
+offset_top = 196.0
+offset_right = 375.0
+offset_bottom = 219.0
+scale = Vector2(3.22241, 3.71468)
+text = "Find the angle"
+
+[node name="answer" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 1028.0
+offset_top = 869.0
+offset_right = 1219.0
+offset_bottom = 892.0
+scale = Vector2(3.22241, 3.71468)
+text = "Esc if done to quit"
+
+[node name="45" type="Line2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(765, 606)
+scale = Vector2(3, 3)
+points = PackedVector2Array(0, 0, 100, 0, 100, -100, 0, 0)
+
+[node name="45angle1" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 21.0
+offset_top = -24.0
+offset_right = 61.0
+offset_bottom = -1.0
+text = "45"
+
+[node name="45angle2" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 74.0
+offset_top = -71.3333
+offset_right = 114.0
+offset_bottom = -48.3333
+text = "45"
+
+[node name="45sidec" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 16.3333
+offset_top = -68.3333
+offset_right = 56.3333
+offset_bottom = -45.3333
+text = "10"
+
+[node name="45sidea" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 25.3333
+offset_right = 65.3333
+offset_bottom = 23.0
+text = "10"
+
+[node name="45sideb" type="Label" parent="45"]
+unique_name_in_owner = true
+offset_left = 108.0
+offset_top = -42.6667
+offset_right = 148.0
+offset_bottom = -19.6667
+text = "10"
+
+[node name="6030" type="Line2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(160, 927)
+scale = Vector2(3, 3)
+points = PackedVector2Array(0, 0, 100, 0, 100, -200, 0, 0)
+
+[node name="63angle1" type="Label" parent="6030"]
+unique_name_in_owner = true
+offset_left = 13.3333
+offset_top = -24.6667
+offset_right = 53.3333
+offset_bottom = -1.66669
+text = "60"
+
+[node name="63angle2" type="Label" parent="6030"]
+unique_name_in_owner = true
+offset_left = 77.3333
+offset_top = -154.667
+offset_right = 117.333
+offset_bottom = -131.667
+text = "30"
+
+[node name="63sidec" type="Label" parent="6030"]
+unique_name_in_owner = true
+offset_left = 17.0
+offset_top = -110.667
+offset_right = 57.0
+offset_bottom = -87.6667
+text = "10"
+
+[node name="63sidea" type="Label" parent="6030"]
+unique_name_in_owner = true
+offset_left = 35.3333
+offset_top = 3.66667
+offset_right = 75.3333
+offset_bottom = 26.6667
+text = "10"
+
+[node name="63sideb" type="Label" parent="6030"]
+unique_name_in_owner = true
+offset_left = 108.333
+offset_top = -107.333
+offset_right = 148.333
+offset_bottom = -84.3334
+text = "10"

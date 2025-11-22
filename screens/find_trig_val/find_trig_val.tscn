@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://2es0rogtgpcs"]
+
+[ext_resource type="Script" uid="uid://uq70g53vyv6l" path="res://screens/find_trig_val/find_trig_val.gd" id="1_qec5d"]
+
+[node name="find_trig_val" type="Node2D"]
+script = ExtResource("1_qec5d")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.95687, 2.69805)
+text = "4. Find the Trigonometric Value"
+
+[node name="question" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 200.0
+offset_top = 160.0
+offset_right = 544.0
+offset_bottom = 183.0
+scale = Vector2(6.14319, 9.17503)
+text = "cos(90)"
+
+[node name="answer" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 337.0
+offset_top = 458.0
+offset_right = 681.0
+offset_bottom = 481.0
+scale = Vector2(5.42504, 6.66891)
+text = "0"

@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds6nmoxh8prgt"]
+
+[ext_resource type="Script" uid="uid://dws8cegxai07w" path="res://screens/spingonometry/spingonometry.gd" id="1_jy4mf"]
+[ext_resource type="PackedScene" uid="uid://md4y0xd4jcq6" path="res://stuff/wheel/wheel.tscn" id="3_m6f1x"]
+
+[node name="spingonometry" type="Node2D"]
+script = ExtResource("1_jy4mf")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Esc to quit"
+
+[node name="wheel" parent="." instance=ExtResource("3_m6f1x")]
+position = Vector2(361, 569)
+
+[node name="force_fates_buttons" type="HBoxContainer" parent="."]
+offset_left = 116.0
+offset_top = 949.0
+offset_right = 926.0
+offset_bottom = 989.0
+scale = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="force_fates_buttons"]
+layout_mode = 2
+text = "Force Fates:"
+
+[node name="1" type="Button" parent="force_fates_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1. Ratio"
+
+[node name="2" type="Button" parent="force_fates_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2. Find Angle"
+
+[node name="3" type="Button" parent="force_fates_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "3. Trig Identity T or F"
+
+[node name="4" type="Button" parent="force_fates_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "4. Find Trig Val"
+
+[node name="5" type="Button" parent="force_fates_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5. Find Length"
+
+[node name="6" type="Button" parent="force_fates_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "6. Inverse Trig"

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://if0tifdidkqt"]
+
+[ext_resource type="Script" uid="uid://cml1rcb0pk6gp" path="res://screens/determine_ratio/determine_ratio.gd" id="1_b6w1r"]
+
+[node name="DetermineRatio" type="Node2D"]
+script = ExtResource("1_b6w1r")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.46729, 1.92771)
+text = "1. Determine / Identify the Trigonometric Ratio"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1698.0
+offset_top = 21.0
+offset_right = 1836.0
+offset_bottom = 44.0
+scale = Vector2(1.46729, 1.92771)
+text = "Esc if done to quit"
+
+[node name="question" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 200.0
+offset_top = 160.0
+offset_right = 544.0
+offset_bottom = 183.0
+scale = Vector2(4.93662, 8.58697)
+text = "? = O / H"
+
+[node name="answer" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 337.0
+offset_top = 458.0
+offset_right = 681.0
+offset_bottom = 481.0
+scale = Vector2(3.13717, 6.66891)
+text = "Cotangent"

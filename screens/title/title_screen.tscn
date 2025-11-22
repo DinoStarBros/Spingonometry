@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://dnfvwms7vr54u"]
+
+[ext_resource type="Script" uid="uid://b7orn1bvbjo2k" path="res://screens/title/title_screen.gd" id="1_a0lyr"]
+[ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_7rk1i"]
+[ext_resource type="AudioStream" uid="uid://dot5mpa7nqpj7" path="res://Audio/planemusic/CardTowerMenu.wav" id="3_7rk1i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pefg2"]
+content_margin_bottom = 4.0
+bg_color = Color(0.97566444, 4.5724214e-06, 1.540184e-06, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42e70"]
+content_margin_bottom = 4.0
+bg_color = Color(0.7354195, 0, 0.0011873856, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rk1i"]
+content_margin_bottom = 4.0
+bg_color = Color(0.9999998, 0.14295253, 0.10145304, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6usmv"]
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.5242685, 0.94032985, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xh3uk"]
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.33837852, 0.6211618, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucdjm"]
+content_margin_bottom = 4.0
+bg_color = Color(0.3181175, 0.6478892, 0.9999955, 1)
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_a0lyr"]
+font_size = 200
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pefg2"]
+font_size = 70
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pefg2"]
+shader = ExtResource("2_7rk1i")
+shader_parameter/spin_rotation_speed = 2.0
+shader_parameter/move_speed = 7.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.871, 0.267, 0.231, 1)
+shader_parameter/colour_2 = Color(0, 0.42, 0.706, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = false
+
+[node name="title screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a0lyr")
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = 247.0
+offset_right = 1.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="play" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_pefg2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_42e70")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rk1i")
+text = "   Play   "
+
+[node name="quit" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_6usmv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xh3uk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ucdjm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xh3uk")
+text = "Quit"
+
+[node name="title_txt" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -494.5
+offset_top = -100.5
+offset_right = 494.5
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Spingonometry"
+label_settings = SubResource("LabelSettings_a0lyr")
+horizontal_alignment = 1
+
+[node name="desc" type="Label" parent="title_txt"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -785.5
+offset_top = -9.0
+offset_right = 785.5
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "A wheel based learning tool for trigonometry!"
+label_settings = SubResource("LabelSettings_pefg2")
+horizontal_alignment = 1
+
+[node name="balatro_bg" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_pefg2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="numFallSpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7rk1i")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="buttons/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]
