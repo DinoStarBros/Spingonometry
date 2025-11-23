@@ -1,39 +1,155 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkumihltrmexd"]
+[gd_scene load_steps=10 format=3 uid="uid://dkumihltrmexd"]
 
 [ext_resource type="Script" uid="uid://bbocfr78krafn" path="res://screens/trig_identity_TorF/trig_identity_tor_f.gd" id="1_nutfs"]
+[ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_ioh44"]
 
-[node name="trig_identity_TorF" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_ioh44"]
+font_size = 90
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q47pu"]
+font_size = 200
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3yht"]
+font_size = 80
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5y267"]
+font_size = 200
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4v706"]
+shader = ExtResource("2_ioh44")
+shader_parameter/spin_rotation_speed = 2.0
+shader_parameter/move_speed = 7.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0, 0.51262075, 0.9236815, 1)
+shader_parameter/colour_2 = Color(0.6055085, 0.0016932398, 0.7905483, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ioh44"]
+size = Vector2(86.33, 60.345)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4v706"]
+font_size = 50
+
+[node name="trig_identity_TorF" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_nutfs")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-scale = Vector2(2.27456, 3.6394)
 text = "3. True or False: Is this trigonometric identity real?"
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 1566.0
-offset_top = 21.0
-offset_right = 1936.0
-offset_bottom = 44.0
-scale = Vector2(2.27456, 3.6394)
-text = "Esc if done to quit"
+label_settings = SubResource("LabelSettings_ioh44")
 
 [node name="question" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 399.0
-offset_top = 202.0
-offset_right = 769.0
-offset_bottom = 225.0
-scale = Vector2(3.04107, 6.78409)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 198.0
+offset_right = 1055.0
+offset_bottom = 399.0
 text = "tan = sin / cos"
+label_settings = SubResource("LabelSettings_q47pu")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 603.0
+offset_right = 238.0
+offset_bottom = 684.0
+text = "Answer:"
+label_settings = SubResource("LabelSettings_p3yht")
 
 [node name="answer" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
-offset_left = 601.0
-offset_top = 532.0
-offset_right = 971.0
-offset_bottom = 555.0
-scale = Vector2(2.62898, 6.51656)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 661.0
+offset_right = 402.0
+offset_bottom = 862.0
 text = "true"
+label_settings = SubResource("LabelSettings_5y267")
+
+[node name="balatro_bg" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_4v706")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="exit_button" type="TouchScreenButton" parent="."]
+position = Vector2(1855, 56)
+shape = SubResource("RectangleShape2D_ioh44")
+action = "ESC"
+
+[node name="pa_bg" type="ColorRect" parent="exit_button"]
+show_behind_parent = true
+offset_left = -40.0
+offset_top = -27.0
+offset_right = 41.0
+offset_bottom = 28.0
+color = Color(0.19252527, 8.085966e-06, 0.81525064, 1)
+
+[node name="pa_bg_shadow" type="ColorRect" parent="exit_button/pa_bg"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 58.0
+color = Color(0, 0, 0, 1)
+
+[node name="exit_txt" type="Label" parent="exit_button/pa_bg"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 53.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_4v706")
+
+[node name="big_text_bg" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = -445.0
+offset_top = -11.0
+offset_right = 2027.0
+offset_bottom = 188.0
+color = Color(0.28729492, 0.28729492, 0.2872949, 1)
+
+[node name="big_text_bg_shadow" type="ColorRect" parent="big_text_bg"]
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 2479.0
+offset_bottom = 205.0
+color = Color(0, 0, 0, 1)

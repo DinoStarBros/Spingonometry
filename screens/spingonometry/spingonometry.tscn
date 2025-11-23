@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds6nmoxh8prgt"]
+[gd_scene load_steps=12 format=3 uid="uid://ds6nmoxh8prgt"]
 
 [ext_resource type="Script" uid="uid://dws8cegxai07w" path="res://screens/spingonometry/spingonometry.gd" id="1_jy4mf"]
 [ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="3_g81br"]
@@ -30,6 +30,12 @@ shader_parameter/lighting = 0.4
 shader_parameter/spin_amount = 0.095
 shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6f1x"]
+size = Vector2(86.33, 60.345)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6f1x"]
+font_size = 50
 
 [node name="spingonometry" type="Control"]
 layout_mode = 3
@@ -66,6 +72,7 @@ text = "Force Fates:"
 [node name="1" type="Button" parent="force_fates_buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_m6f1x")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n2siu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rnd7")
@@ -75,26 +82,31 @@ text = "1. Ratio"
 [node name="2" type="Button" parent="force_fates_buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "2. Find Angle"
 
 [node name="3" type="Button" parent="force_fates_buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "3. Trig Identity T or F"
 
 [node name="4" type="Button" parent="force_fates_buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "4. Find Trig Val"
 
 [node name="5" type="Button" parent="force_fates_buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "5. Find Length"
 
 [node name="6" type="Button" parent="force_fates_buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "6. Inverse Trig"
 
 [node name="balatro_bg" type="ColorRect" parent="."]
@@ -113,3 +125,34 @@ stream = ExtResource("4_m6f1x")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
+
+[node name="exit_button" type="TouchScreenButton" parent="."]
+position = Vector2(1855, 56)
+shape = SubResource("RectangleShape2D_m6f1x")
+action = "ESC"
+
+[node name="pa_bg" type="ColorRect" parent="exit_button"]
+show_behind_parent = true
+offset_left = -40.0
+offset_top = -27.0
+offset_right = 41.0
+offset_bottom = 28.0
+color = Color(0.19252527, 8.085966e-06, 0.81525064, 1)
+
+[node name="pa_bg_shadow" type="ColorRect" parent="exit_button/pa_bg"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 58.0
+color = Color(0, 0, 0, 1)
+
+[node name="exit_txt" type="Label" parent="exit_button/pa_bg"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 53.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_m6f1x")

@@ -20,7 +20,7 @@ var side_lengths: Array = [
 ]
 func _ready() -> void:
 	
-	question_type = false#randi_range(0,3) == 0
+	question_type = randi_range(0,3) == 0
 	# Less chance to get a missing angle case w/ trig ratio
 	
 	#%"45angle1".visible = question_type

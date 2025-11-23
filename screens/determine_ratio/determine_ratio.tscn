@@ -1,7 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://if0tifdidkqt"]
+[gd_scene load_steps=9 format=3 uid="uid://if0tifdidkqt"]
 
 [ext_resource type="Script" uid="uid://cml1rcb0pk6gp" path="res://screens/determine_ratio/determine_ratio.gd" id="1_b6w1r"]
 [ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_w57dn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w57dn"]
+font_size = 90
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3kb44"]
+font_size = 200
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pc5p5"]
+font_size = 80
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(10, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6lnww"]
 shader = ExtResource("2_w57dn")
@@ -17,6 +35,12 @@ shader_parameter/spin_amount = -0.115
 shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = false
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w57dn"]
+size = Vector2(86.33, 60.345)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6lnww"]
+font_size = 50
+
 [node name="DetermineRatio" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -26,42 +50,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b6w1r")
 
-[node name="Label" type="Label" parent="."]
+[node name="fate_txt" type="Label" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-scale = Vector2(1.46729, 1.92771)
 text = "1. Determine / Identify the Trigonometric Ratio"
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1698.0
-offset_top = 21.0
-offset_right = 1836.0
-offset_bottom = 44.0
-scale = Vector2(1.46729, 1.92771)
-text = "Esc if done to quit"
+label_settings = SubResource("LabelSettings_w57dn")
 
 [node name="question" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 200.0
-offset_top = 160.0
-offset_right = 544.0
-offset_bottom = 183.0
-scale = Vector2(4.93662, 8.58697)
-text = "? = O / H"
+offset_left = 23.0
+offset_top = 189.0
+offset_right = 1833.0
+offset_bottom = 390.0
+text = "? = Opposite / Hypotenuse"
+label_settings = SubResource("LabelSettings_3kb44")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 407.0
+offset_right = 258.0
+offset_bottom = 488.0
+text = "Answer:"
+label_settings = SubResource("LabelSettings_pc5p5")
 
 [node name="answer" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 337.0
-offset_top = 458.0
-offset_right = 681.0
-offset_bottom = 481.0
-scale = Vector2(3.13717, 6.66891)
-text = "Cotangent"
+offset_left = 17.0
+offset_top = 510.0
+offset_right = 1561.0
+offset_bottom = 711.0
+text = "Opposite / Hypotenuse"
+label_settings = SubResource("LabelSettings_3kb44")
 
 [node name="balatro_bg" type="ColorRect" parent="."]
 z_index = -5
@@ -73,3 +96,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="exit_button" type="TouchScreenButton" parent="."]
+position = Vector2(1855, 56)
+shape = SubResource("RectangleShape2D_w57dn")
+action = "ESC"
+
+[node name="pa_bg" type="ColorRect" parent="exit_button"]
+show_behind_parent = true
+offset_left = -40.0
+offset_top = -27.0
+offset_right = 41.0
+offset_bottom = 28.0
+color = Color(0.19252527, 8.085966e-06, 0.81525064, 1)
+
+[node name="pa_bg_shadow" type="ColorRect" parent="exit_button/pa_bg"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 58.0
+color = Color(0, 0, 0, 1)
+
+[node name="exit_txt" type="Label" parent="exit_button/pa_bg"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 53.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_6lnww")
+
+[node name="big_text_bg" type="ColorRect" parent="."]
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = -445.0
+offset_top = -27.0
+offset_right = 2027.0
+offset_bottom = 172.0
+color = Color(0.28729492, 0.28729492, 0.2872949, 1)
+
+[node name="big_text_bg_shadow" type="ColorRect" parent="big_text_bg"]
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 2479.0
+offset_bottom = 205.0
+color = Color(0, 0, 0, 1)

@@ -93,7 +93,7 @@ func determine_fate() -> void:
 		
 	elif wheel.rotation_degrees > quadrants[3].x and wheel.rotation_degrees < quadrants[3].y:
 		debug_txt.text = "4. Find the trig value. 
-		(e.g. sin(45))"
+		(e.g. sin(45)=?)"
 		problem_scn_str = GScnRef.screen["f4"]
 		
 	elif wheel.rotation_degrees > quadrants[4].x and wheel.rotation_degrees < quadrants[4].y:

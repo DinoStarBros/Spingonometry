@@ -17,37 +17,37 @@ func _input(_event: InputEvent) -> void:
 func force_1() -> void:
 	#Global.change_scene(GScnRef.screen["f1"])
 	#wheel.wheel.rotation_degrees = 330
-	if not wheel.fate_accepted:
+	if not wheel.spinning:
 		_create_property_tween(wheel.wheel, "rotation_degrees", 330)
 
 func force_2() -> void:
 	#Global.change_scene(GScnRef.screen["f2"])
 	#wheel.wheel.rotation_degrees = 270
-	if not wheel.fate_accepted:
+	if not wheel.spinning:
 		_create_property_tween(wheel.wheel, "rotation_degrees", 270)
 
 func force_3() -> void:
 	#Global.change_scene(GScnRef.screen["f3"])
 	#wheel.wheel.rotation_degrees = 210
-	if not wheel.fate_accepted:
+	if not wheel.spinning:
 		_create_property_tween(wheel.wheel, "rotation_degrees", 210)
 
 func force_4() -> void:
 	#Global.change_scene(GScnRef.screen["f4"])
 	#wheel.wheel.rotation_degrees = 150
-	if not wheel.fate_accepted:
+	if not wheel.spinning:
 		_create_property_tween(wheel.wheel, "rotation_degrees", 150)
 
 func force_5() -> void:
 	#Global.change_scene(GScnRef.screen["f5"])
 	#wheel.wheel.rotation_degrees = 90
-	if not wheel.fate_accepted:
+	if not wheel.spinning:
 		_create_property_tween(wheel.wheel, "rotation_degrees", 90)
 
 func force_6() -> void:
 	#Global.change_scene(GScnRef.screen["f6"])wheel.wheel.rotation_degrees = 30
 	#wheel.wheel.rotation_degrees = 30
-	if not wheel.fate_accepted:
+	if not wheel.spinning:
 		_create_property_tween(wheel.wheel, "rotation_degrees", 30)
 
 var tween : Tween
@@ -61,6 +61,8 @@ func _create_property_tween(
 	set_ease:Tween.EaseType=Tween.EASE_IN_OUT,
 	set_trans:Tween.TransitionType=Tween.TRANS_SINE
 	) -> void:
+	
+	wheel.scene_just_started = false
 	
 	if tween:
 		tween.kill()
