@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var question_index : int
 

@@ -1,11 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dihsxmdqb1phg"]
+[gd_scene load_steps=4 format=3 uid="uid://dihsxmdqb1phg"]
 
 [ext_resource type="Script" uid="uid://7elusiiph5w2" path="res://screens/find_missing_angle/find_missing_angle.gd" id="1_723o7"]
+[ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_6mjs3"]
 
-[node name="find_missing_angle" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhrpa"]
+shader = ExtResource("2_6mjs3")
+shader_parameter/spin_rotation_speed = 2.0
+shader_parameter/move_speed = 7.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.95218045, 0, 0.1773195, 1)
+shader_parameter/colour_2 = Color(0.16656402, 0.4871276, 0, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.095
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = false
+
+[node name="find_missing_angle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_723o7")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(3.22241, 3.71468)
@@ -13,6 +35,7 @@ text = "2. Find the Missing Angle
 * not drawn to scale"
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1459.0
 offset_top = 32.0
 offset_right = 1650.0
@@ -22,6 +45,7 @@ text = "Esc if done to quit"
 
 [node name="question" type="Label" parent="."]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 184.0
 offset_top = 196.0
 offset_right = 375.0
@@ -32,6 +56,7 @@ text = "Find the angle"
 [node name="answer" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
+layout_mode = 0
 offset_left = 1028.0
 offset_top = 869.0
 offset_right = 1219.0
@@ -129,3 +154,14 @@ offset_top = -107.333
 offset_right = 148.333
 offset_bottom = -84.3334
 text = "10"
+
+[node name="balatro_bg" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_yhrpa")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

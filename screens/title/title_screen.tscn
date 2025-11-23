@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnfvwms7vr54u"]
+[gd_scene load_steps=18 format=3 uid="uid://dnfvwms7vr54u"]
 
 [ext_resource type="Script" uid="uid://b7orn1bvbjo2k" path="res://screens/title/title_screen.gd" id="1_a0lyr"]
 [ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_7rk1i"]
@@ -73,7 +73,14 @@ shader_parameter/contrast = 3.5
 shader_parameter/lighting = 0.4
 shader_parameter/spin_amount = 0.25
 shader_parameter/pixel_filter = 740.0
-shader_parameter/is_rotating = false
+shader_parameter/is_rotating = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq8cc"]
+bg_color = Color(0.22911215, 0.22911218, 0.22911206, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7rk1i"]
+paragraph_spacing = 20.0
+font_size = 40
 
 [node name="title screen" type="Control"]
 layout_mode = 3
@@ -191,3 +198,42 @@ stream = ExtResource("3_7rk1i")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
+
+[node name="h2pPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 110.0
+offset_top = 69.0
+offset_right = 1810.0
+offset_bottom = 1006.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gq8cc")
+
+[node name="H2PTXT" type="Label" parent="h2pPanel"]
+layout_mode = 2
+text = "Welcome to Spingonometry! A game that can help students get comfortable with trigonometry through a fun game format!
+This game works by spinning a wheel that lands on a FATE. Each FATE is its own type of trigonometry question.
+How to play:
+1. Spin the wheel by clicking on it
+2. Once it lands on a fate, press PROCEED to go to the question, or 
+spin again if you want a different fate.
+Note: You may also force a fate of your choice by clicking the 
+FORCE FATES buttons at the bottom.
+4. Once you proceed, a question shows up. Press START to start the timer. 
+This is when the students will start solving the question.
+5. After the time is up, the students must show their answers.
+6. The student/group with the correct answer gets points.
+7. Press RETURN to go back to the wheel, and 
+repeat this for as many times as you'd like.
+8. The student/group with the most points wins!"
+label_settings = SubResource("LabelSettings_7rk1i")
+
+[node name="returnFromH2P" type="Button" parent="h2pPanel/H2PTXT"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1380.0
+offset_top = 845.0
+offset_right = 1700.0
+offset_bottom = 937.0
+theme_override_font_sizes/font_size = 50
+text = "Return"

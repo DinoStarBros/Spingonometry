@@ -31,7 +31,6 @@ func _input(_event: InputEvent) -> void:
 		Global.change_scene(problem_scn_str)
 
 func _process(delta: float) -> void:
-	print(scene_just_started)
 	
 	if not scene_just_started:
 		%accept_fate.visible = fate_accepted
@@ -93,7 +92,8 @@ func determine_fate() -> void:
 		problem_scn_str = GScnRef.screen["f3"]
 		
 	elif wheel.rotation_degrees > quadrants[3].x and wheel.rotation_degrees < quadrants[3].y:
-		debug_txt.text = "4. Find the trig value. (e.g. sin(45))"
+		debug_txt.text = "4. Find the trig value. 
+		(e.g. sin(45))"
 		problem_scn_str = GScnRef.screen["f4"]
 		
 	elif wheel.rotation_degrees > quadrants[4].x and wheel.rotation_degrees < quadrants[4].y:

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var question_type : bool = false # If false, find the missing angle using two sides and a trigonometric ratio
 # If true, find the missing angle using one angle and subtraction

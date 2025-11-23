@@ -10,16 +10,20 @@ func _ready() -> void:
 	%play.pressed.connect(_on_play_pressed)
 	%how2play.pressed.connect(_how2play_pressed)
 	%quit.pressed.connect(_on_quit_pressed)
+	%returnFromH2P.pressed.connect(_returnFromH2P_pressed)
 
 func _on_play_pressed() -> void:
 	#Global.change_scene("res://screens/spingonometry/spingonometry.tscn")
 	Global.change_scene("res://screens/spingonometry/spingonometry.tscn")
 
 func _how2play_pressed() -> void:
-	pass
+	%h2pPanel.show()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _returnFromH2P_pressed() -> void:
+	%h2pPanel.hide()
 
 func _numfall_timer_timeout() -> void:
 	for n in randi_range(1, 3):
