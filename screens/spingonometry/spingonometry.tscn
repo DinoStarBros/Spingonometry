@@ -122,7 +122,7 @@ mouse_filter = 2
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_m6f1x")
-volume_db = -10.0
+volume_db = -13.0
 autoplay = true
 bus = &"Music"
 

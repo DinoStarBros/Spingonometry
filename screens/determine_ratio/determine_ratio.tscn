@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://if0tifdidkqt"]
+[gd_scene load_steps=10 format=3 uid="uid://if0tifdidkqt"]
 
 [ext_resource type="Script" uid="uid://cml1rcb0pk6gp" path="res://screens/determine_ratio/determine_ratio.gd" id="1_b6w1r"]
 [ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_w57dn"]
@@ -36,10 +36,13 @@ shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w57dn"]
-size = Vector2(86.33, 60.345)
+size = Vector2(325, 80)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5x65t"]
+font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_6lnww"]
-font_size = 50
+font_size = 70
 
 [node name="DetermineRatio" type="Control"]
 layout_mode = 3
@@ -126,7 +129,7 @@ offset_top = 2.0
 offset_right = 77.0
 offset_bottom = 53.0
 text = "Exit"
-label_settings = SubResource("LabelSettings_6lnww")
+label_settings = SubResource("LabelSettings_5x65t")
 
 [node name="big_text_bg" type="ColorRect" parent="."]
 show_behind_parent = true
@@ -147,3 +150,34 @@ offset_top = 6.0
 offset_right = 2479.0
 offset_bottom = 205.0
 color = Color(0, 0, 0, 1)
+
+[node name="answer_button" type="TouchScreenButton" parent="."]
+position = Vector2(1667, 465)
+shape = SubResource("RectangleShape2D_w57dn")
+action = "space"
+
+[node name="pa_bg" type="ColorRect" parent="answer_button"]
+show_behind_parent = true
+offset_left = -158.0
+offset_top = -40.0
+offset_right = 158.0
+offset_bottom = 40.0
+color = Color(0.19252527, 8.085966e-06, 0.81525064, 1)
+
+[node name="pa_bg_shadow" type="ColorRect" parent="answer_button/pa_bg"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 319.0
+offset_bottom = 82.0
+color = Color(0, 0, 0, 1)
+
+[node name="exit_txt" type="Label" parent="answer_button/pa_bg"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 53.0
+text = "Show Answer"
+label_settings = SubResource("LabelSettings_6lnww")

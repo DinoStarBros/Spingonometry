@@ -3,6 +3,8 @@ extends Control
 @onready var wheel: Wheel = %wheel
 
 func _ready() -> void:
+	Global.allow_show_answer = false
+	
 	%"1".pressed.connect(force_1)
 	%"2".pressed.connect(force_2)
 	%"3".pressed.connect(force_3)

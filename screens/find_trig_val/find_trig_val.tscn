@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2es0rogtgpcs"]
+[gd_scene load_steps=12 format=3 uid="uid://2es0rogtgpcs"]
 
 [ext_resource type="Script" uid="uid://uq70g53vyv6l" path="res://screens/find_trig_val/find_trig_val.gd" id="1_qec5d"]
 [ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_o0soy"]
@@ -46,6 +46,12 @@ size = Vector2(86.33, 60.345)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fkvrr"]
 font_size = 50
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkvrr"]
+size = Vector2(325, 80)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6uh0h"]
+font_size = 70
 
 [node name="find_trig_val" type="Control"]
 layout_mode = 3
@@ -153,3 +159,34 @@ offset_top = 6.0
 offset_right = 2479.0
 offset_bottom = 205.0
 color = Color(0, 0, 0, 1)
+
+[node name="answer_button" type="TouchScreenButton" parent="."]
+position = Vector2(1416, 510)
+shape = SubResource("RectangleShape2D_fkvrr")
+action = "space"
+
+[node name="pa_bg" type="ColorRect" parent="answer_button"]
+show_behind_parent = true
+offset_left = -158.0
+offset_top = -40.0
+offset_right = 158.0
+offset_bottom = 40.0
+color = Color(0.19252527, 8.085966e-06, 0.81525064, 1)
+
+[node name="pa_bg_shadow" type="ColorRect" parent="answer_button/pa_bg"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 319.0
+offset_bottom = 82.0
+color = Color(0, 0, 0, 1)
+
+[node name="exit_txt" type="Label" parent="answer_button/pa_bg"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 53.0
+text = "Show Answer"
+label_settings = SubResource("LabelSettings_6uh0h")
