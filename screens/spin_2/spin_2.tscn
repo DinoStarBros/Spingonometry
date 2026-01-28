@@ -1,0 +1,345 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwge7tkafeews"]
+
+[ext_resource type="Script" uid="uid://dhx4wr20mmt4" path="res://screens/spin_2/spin_2.gd" id="1_wi6rd"]
+[ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/proc_wheel.gd" id="2_u7hj5"]
+[ext_resource type="LabelSettings" uid="uid://dev6vabd27sj6" path="res://screens/spin_2/wheel_txt_font.tres" id="3_ej073"]
+[ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="4_b2m4h"]
+[ext_resource type="Script" uid="uid://lrykvdnlckw6" path="res://stuff/wheel/shadow_wheel.gd" id="4_iiutg"]
+[ext_resource type="Texture2D" uid="uid://cwefwfcistj05" path="res://Art/Stuff2/heart_javelin.png" id="5_sony7"]
+[ext_resource type="AudioStream" uid="uid://dtq0aduiy7nn4" path="res://Audio/gunshot.wav" id="7_j6yei"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ej073"]
+radius = 340.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_iiutg"]
+font_size = 56
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sony7"]
+resource_local_to_scene = true
+shader = ExtResource("4_b2m4h")
+shader_parameter/spin_rotation_speed = 1.0
+shader_parameter/move_speed = 7.5
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0, 0.41960785, 0.7058824, 1)
+shader_parameter/colour_2 = Color(0.9353925, 0.37138742, 0.036743976, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = true
+
+[sub_resource type="Animation" id="Animation_j6yei"]
+resource_name = "nod"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.17453292, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yj1vx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yj1vx"]
+_data = {
+&"RESET": SubResource("Animation_yj1vx"),
+&"nod": SubResource("Animation_j6yei")
+}
+
+[node name="spin2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wi6rd")
+
+[node name="wheel_visual" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(406, 546)
+scale = Vector2(1.65, 1.65)
+script = ExtResource("2_u7hj5")
+
+[node name="l1" type="Line2D" parent="wheel_visual"]
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual/l1"]
+offset_left = 12.512222
+offset_right = 99.51222
+offset_bottom = 26.0
+scale = Vector2(0.5, 0.5)
+text = "Cotangent"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l2" type="Line2D" parent="wheel_visual"]
+rotation = 1.0472
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual/l2"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Secant"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l3" type="Line2D" parent="wheel_visual"]
+rotation = 2.0944
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual/l3"]
+offset_left = 9.8934765
+offset_top = -0.06835079
+offset_right = 87.89348
+offset_bottom = 25.931648
+scale = Vector2(0.5, 0.5)
+text = "Cosecant"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l4" type="Line2D" parent="wheel_visual"]
+rotation = 3.14159
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual/l4"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Tangent"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l5" type="Line2D" parent="wheel_visual"]
+rotation = -2.0943954
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual/l5"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Cosine"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l6" type="Line2D" parent="wheel_visual"]
+rotation = -1.0471953
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual/l6"]
+offset_left = 12.7241535
+offset_top = 0.10336137
+offset_right = 99.72415
+offset_bottom = 26.103361
+scale = Vector2(0.5, 0.5)
+text = "Sine"
+label_settings = ExtResource("3_ej073")
+
+[node name="shadow_wheel" type="Node2D" parent="wheel_visual"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+scale = Vector2(1.03, 1.03)
+script = ExtResource("4_iiutg")
+
+[node name="wheel_visual2" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1168, 546)
+scale = Vector2(1.65, 1.65)
+script = ExtResource("2_u7hj5")
+COLORS = [Color(1, 0, 0, 1), Color(1, 0.64705884, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1), Color(0.21784005, 0.23307556, 0.013031978, 1)]
+
+[node name="l1" type="Line2D" parent="wheel_visual2"]
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual2/l1"]
+offset_left = 12.512222
+offset_right = 99.51222
+offset_bottom = 26.0
+scale = Vector2(0.5, 0.5)
+text = "Cotangent"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l2" type="Line2D" parent="wheel_visual2"]
+rotation = 1.0472
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual2/l2"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Secant"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l3" type="Line2D" parent="wheel_visual2"]
+rotation = 2.0944
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual2/l3"]
+offset_left = 9.8934765
+offset_top = -0.06835079
+offset_right = 87.89348
+offset_bottom = 25.931648
+scale = Vector2(0.5, 0.5)
+text = "Cosecant"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l4" type="Line2D" parent="wheel_visual2"]
+rotation = 3.14159
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual2/l4"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Tangent"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l5" type="Line2D" parent="wheel_visual2"]
+rotation = -2.0943954
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual2/l5"]
+offset_left = 19.8
+offset_right = 66.8
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Cosine"
+label_settings = ExtResource("3_ej073")
+metadata/_edit_use_anchors_ = true
+
+[node name="l6" type="Line2D" parent="wheel_visual2"]
+rotation = -1.0471953
+scale = Vector2(3.1, 3.1)
+points = PackedVector2Array(0, 0, 65, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="fate" type="Label" parent="wheel_visual2/l6"]
+offset_left = 12.7241535
+offset_top = 0.10336137
+offset_right = 99.72415
+offset_bottom = 26.103361
+scale = Vector2(0.5, 0.5)
+text = "Sine"
+label_settings = ExtResource("3_ej073")
+
+[node name="shadow_wheel" type="Node2D" parent="wheel_visual2"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+scale = Vector2(1.03, 1.03)
+script = ExtResource("4_iiutg")
+
+[node name="clickWheel" type="TouchScreenButton" parent="."]
+z_index = 4
+position = Vector2(406, 546)
+shape = SubResource("CircleShape2D_ej073")
+action = "spin"
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+text = "0.0"
+label_settings = SubResource("LabelSettings_iiutg")
+
+[node name="wheel_rot_accel_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="balatro_bg" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_sony7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -272.0
+offset_right = 45.0
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="arrow" type="Sprite2D" parent="."]
+position = Vector2(792.405, 546)
+scale = Vector2(2, 2)
+texture = ExtResource("5_sony7")
+flip_h = true
+
+[node name="arrownim" type="AnimationPlayer" parent="arrow"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_yj1vx")
+}
+
+[node name="spinClick" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_j6yei")
+pitch_scale = 5.0
+bus = &"SFX"

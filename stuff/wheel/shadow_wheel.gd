@@ -1,17 +1,11 @@
 @tool
 extends Node2D
-class_name WheelVisual
 
 var rotation_velocity : float
 var is_rotation_accelerating : bool = false
 
-@export var COLORS : Array = [
-	Color.RED,
-	Color.ORANGE,
-	Color.YELLOW,
-	Color.GREEN,
-	Color.BLUE,
-	Color.INDIGO,
+const COLORS = [
+	Color.BLACK,
 ]
 
 func _draw():
@@ -33,13 +27,3 @@ func _draw():
 			points.append(Vector2(cos(t), sin(t)) * radius)
 
 		draw_polygon(points, [COLORS[i]])
-
-func _process(delta: float) -> void:
-	_rotate_delta(delta)
-	
-	if !is_rotation_accelerating:
-		rotation_velocity = lerp(rotation_velocity, 0.0, 2 * delta)
-
-func _rotate_delta(delta: float) -> void:
-	rotation_degrees = wrapf(rotation_degrees, 0, 360)
-	rotation_degrees += rotation_velocity * delta
