@@ -1,15 +1,15 @@
 @tool
 extends Node2D
-class_name ShadowWheel
+class_name AngleWheel
 
 var rotation_velocity : float
 var is_rotation_accelerating : bool = false
 
-const COLORS = [
-	Color.BLACK,
-	Color.BLACK,
-	Color.BLACK,
-	Color.BLACK,
+var COLORS : Array = [
+	Color.WHITE,
+	Color.GRAY,
+	Color.DIM_GRAY,
+	Color.WEB_GRAY,
 ]
 
 func _draw():
@@ -31,3 +31,13 @@ func _draw():
 			points.append(Vector2(cos(t), sin(t)) * radius)
 
 		draw_polygon(points, [COLORS[i]])
+
+func _process(delta: float) -> void:
+	_rotate_delta(delta)
+	
+	if !is_rotation_accelerating:
+		rotation_velocity = lerp(rotation_velocity, 0.0, 2 * delta)
+
+func _rotate_delta(delta: float) -> void:
+	rotation_degrees = wrapf(rotation_degrees, 0, 360)
+	rotation_degrees += rotation_velocity * delta

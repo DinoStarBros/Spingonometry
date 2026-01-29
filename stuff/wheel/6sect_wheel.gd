@@ -1,11 +1,11 @@
 @tool
 extends Node2D
-class_name WheelVisual
+class_name Sect6Wheel
 
 var rotation_velocity : float
 var is_rotation_accelerating : bool = false
 
-@export var COLORS : Array = [
+var COLORS : Array = [
 	Color.RED,
 	Color.ORANGE,
 	Color.YELLOW,

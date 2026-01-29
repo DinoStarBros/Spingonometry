@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cwefwfcistj05" path="res://Art/Stuff2/heart_javelin.png" id="3_l6a76"]
 [ext_resource type="AudioStream" uid="uid://dtq0aduiy7nn4" path="res://Audio/gunshot.wav" id="4_fwm1w"]
 [ext_resource type="AudioStream" uid="uid://1ch63fbrbyjn" path="res://Audio/goodresult-82807.mp3" id="5_diyo3"]
-[ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/proc_wheel.gd" id="5_ltls0"]
+[ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/6sect_wheel.gd" id="5_ltls0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_diyo3"]
 font_size = 90
