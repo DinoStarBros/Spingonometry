@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwge7tkafeews"]
+[gd_scene load_steps=16 format=3 uid="uid://dwge7tkafeews"]
 
 [ext_resource type="Script" uid="uid://dhx4wr20mmt4" path="res://screens/spin_2/spin_2.gd" id="1_wi6rd"]
 [ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/6sect_wheel.gd" id="2_u7hj5"]
@@ -49,6 +49,9 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ej073"]
 radius = 340.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yj1vx"]
+font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_iiutg"]
 font_size = 56
@@ -216,12 +219,29 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg0" type="Label" parent="angle_wheel/0"]
+offset_left = 65.71642
+offset_top = -8.252063
+offset_right = 71.71642
+offset_bottom = 8.747937
+text = "0"
+label_settings = SubResource("LabelSettings_yj1vx")
+
 [node name="30" type="Line2D" parent="angle_wheel/0"]
 rotation = -0.5235988
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg30" type="Label" parent="angle_wheel/0/30"]
+offset_left = 65.81712
+offset_top = -6.871805
+offset_right = 77.81712
+offset_bottom = 30.128195
+text = "30
+"
+label_settings = SubResource("LabelSettings_yj1vx")
 
 [node name="45" type="Line2D" parent="angle_wheel/0"]
 rotation = -0.7853982
@@ -230,12 +250,29 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg45" type="Label" parent="angle_wheel/0/45"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "45
+"
+label_settings = SubResource("LabelSettings_yj1vx")
+
 [node name="60" type="Line2D" parent="angle_wheel/0"]
 rotation = -1.0471976
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg60" type="Label" parent="angle_wheel/0/60"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "60"
+label_settings = SubResource("LabelSettings_yj1vx")
 
 [node name="90" type="Line2D" parent="angle_wheel"]
 rotation = -1.5707964
@@ -244,12 +281,29 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg90" type="Label" parent="angle_wheel/90"]
+offset_left = 65.777374
+offset_top = -5.9411774
+offset_right = 77.777374
+offset_bottom = 31.058823
+text = "90
+"
+label_settings = SubResource("LabelSettings_yj1vx")
+
 [node name="120" type="Line2D" parent="angle_wheel/90"]
 rotation = -0.5235988
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg120" type="Label" parent="angle_wheel/90/120"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "120"
+label_settings = SubResource("LabelSettings_yj1vx")
 
 [node name="135" type="Line2D" parent="angle_wheel/90"]
 rotation = -0.7853982
@@ -258,12 +312,29 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg135" type="Label" parent="angle_wheel/90/135"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "135
+"
+label_settings = SubResource("LabelSettings_yj1vx")
+
 [node name="150" type="Line2D" parent="angle_wheel/90"]
 rotation = -1.0471976
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg150" type="Label" parent="angle_wheel/90/150"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "150"
+label_settings = SubResource("LabelSettings_yj1vx")
 
 [node name="180" type="Line2D" parent="angle_wheel"]
 rotation = -3.1415925
@@ -272,12 +343,31 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg180" type="Label" parent="angle_wheel/180"]
+offset_left = 65.777374
+offset_top = -5.941185
+offset_right = 77.777374
+offset_bottom = 31.058815
+text = "180
+"
+label_settings = SubResource("LabelSettings_yj1vx")
+
 [node name="210" type="Line2D" parent="angle_wheel/180"]
 rotation = -0.5235988
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg210" type="Label" parent="angle_wheel/180/210"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "210
+"
+label_settings = SubResource("LabelSettings_yj1vx")
+metadata/_edit_use_anchors_ = true
 
 [node name="225" type="Line2D" parent="angle_wheel/180"]
 rotation = -0.7853982
@@ -286,12 +376,30 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg225" type="Label" parent="angle_wheel/180/225"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "225"
+label_settings = SubResource("LabelSettings_yj1vx")
+metadata/_edit_use_anchors_ = true
+
 [node name="240" type="Line2D" parent="angle_wheel/180"]
 rotation = -1.0471976
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg240" type="Label" parent="angle_wheel/180/240"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "240
+"
+label_settings = SubResource("LabelSettings_yj1vx")
 
 [node name="270" type="Line2D" parent="angle_wheel"]
 rotation = 1.5707964
@@ -300,12 +408,29 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg270" type="Label" parent="angle_wheel/270"]
+offset_left = 65.777374
+offset_top = -5.9411774
+offset_right = 77.777374
+offset_bottom = 31.058823
+text = "270"
+label_settings = SubResource("LabelSettings_yj1vx")
+
 [node name="300" type="Line2D" parent="angle_wheel/270"]
 rotation = -0.5235988
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg300" type="Label" parent="angle_wheel/270/300"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "300
+"
+label_settings = SubResource("LabelSettings_yj1vx")
 
 [node name="315" type="Line2D" parent="angle_wheel/270"]
 rotation = -0.7853982
@@ -314,12 +439,29 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
 
+[node name="deg315" type="Label" parent="angle_wheel/270/315"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "315
+"
+label_settings = SubResource("LabelSettings_yj1vx")
+
 [node name="330" type="Line2D" parent="angle_wheel/270"]
 rotation = -1.0471976
 scale = Vector2(0.9999999, 0.9999999)
 points = PackedVector2Array(0, 0, 65, 0)
 width = 0.5
 default_color = Color(0, 0, 0, 1)
+
+[node name="deg330" type="Label" parent="angle_wheel/270/330"]
+offset_left = 65.77738
+offset_top = -5.9411826
+offset_right = 77.77738
+offset_bottom = 31.058817
+text = "330"
+label_settings = SubResource("LabelSettings_yj1vx")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
