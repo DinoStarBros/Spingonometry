@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dwge7tkafeews"]
+[gd_scene load_steps=29 format=3 uid="uid://dwge7tkafeews"]
 
 [ext_resource type="Script" uid="uid://dhx4wr20mmt4" path="res://screens/spin_2/spin_2.gd" id="1_wi6rd"]
 [ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/6sect_wheel.gd" id="2_u7hj5"]
@@ -12,6 +12,13 @@
 [ext_resource type="AudioStream" uid="uid://dv45p52rfbvw4" path="res://Audio/School Bell Sound Effect No Copyright.mp3" id="9_0gv5g"]
 [ext_resource type="Script" uid="uid://dxf0o0am5n8o1" path="res://screens/spin_2/angles_arrays.gd" id="9_ixtux"]
 [ext_resource type="Script" uid="uid://dorb4npwwxbl8" path="res://screens/spin_2/answers_arrays.gd" id="10_7narw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0gv5g"]
+font_size = 50
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.24269372, 0.24269372, 0.24269372, 1)
+shadow_offset = Vector2(-6.47, 10.935)
 
 [sub_resource type="Animation" id="Animation_yj1vx"]
 length = 0.001
@@ -140,6 +147,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wi6rd")
+
+[node name="difficulty_label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 324.0
+offset_bottom = 63.0
+text = "Difficulty: Medium"
+label_settings = SubResource("LabelSettings_0gv5g")
 
 [node name="arrow" type="Sprite2D" parent="."]
 unique_name_in_owner = true

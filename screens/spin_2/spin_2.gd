@@ -15,7 +15,7 @@ class_name Spingononmetry2
 @onready var answer_timer: Timer = %answer_timer
 @onready var time_left_label: Label = %time_left_label
 @onready var skip_timer_button: TouchScreenButton = %skip_timer
-
+@onready var difficulty_label: Label = %difficulty_label
 
 enum angle_modes {
 	DEGREES, RADIANS
@@ -56,6 +56,11 @@ func _ready() -> void:
 		%csc.text = str("Sine")
 		%sec.text = str("Cosine")
 		%cot.text = str("Tangent")
+	
+	match Global.current_difficulty:
+		Global.difficulties.EASY: difficulty_label.text = str("Difficulty:Easy")
+		Global.difficulties.MEDIUM: difficulty_label.text = str("Difficulty:Medium")
+		Global.difficulties.HARD: difficulty_label.text = str("Difficulty:Hard")
 
 func _process(delta: float) -> void:
 	_sector_handling()
