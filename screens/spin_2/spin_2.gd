@@ -70,3 +70,6 @@ func _deg_or_rad() -> void:
 		current_angle_mode = angle_modes.DEGREES
 	else:
 		current_angle_mode = angle_modes.RADIANS
+
+func _choose_angle() -> void:
+	pass
