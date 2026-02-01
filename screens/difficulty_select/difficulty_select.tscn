@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp71puaufxxvj"]
+
+[ext_resource type="Script" uid="uid://8tv70iganhr8" path="res://screens/difficulty_select/difficulty_select.gd" id="1_h8ld2"]
+[ext_resource type="Shader" uid="uid://bhe5gtq46s652" path="res://shaders/balatro_bg.gdshader" id="2_31shr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04msk"]
+resource_local_to_scene = true
+shader = ExtResource("2_31shr")
+shader_parameter/spin_rotation_speed = 0.0
+shader_parameter/move_speed = 7.5
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(1, 0.18400368, 0.25770834, 1)
+shader_parameter/colour_2 = Color(0.39494896, 0.65850985, 0.19548067, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31shr"]
+size = Vector2(170, 120)
+
+[sub_resource type="LabelSettings" id="LabelSettings_04msk"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_31shr"]
+font_size = 150
+
+[node name="difficulty_select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h8ld2")
+
+[node name="balatro_bg" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_04msk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -265.0
+offset_right = 31.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="exit" type="TouchScreenButton" parent="."]
+unique_name_in_owner = true
+position = Vector2(1829, 64.00012)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("RectangleShape2D_31shr")
+action = "ESC"
+
+[node name="ColorRect" type="ColorRect" parent="exit"]
+offset_left = -78.5715
+offset_top = -50.0
+offset_right = 80.714264
+offset_bottom = 50.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="exit/ColorRect"]
+layout_mode = 0
+offset_left = 12.143032
+offset_right = 151.14304
+offset_bottom = 101.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_04msk")
+
+[node name="difficulties" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -793.5
+offset_top = -154.0
+offset_right = 793.5
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="easy" type="Button" parent="difficulties"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Easy:
+- Sin Cos Tan
+- Angle can't go past 360
+- 15 seconds"
+
+[node name="medium" type="Button" parent="difficulties"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Medium:
+- Sin Cos Tan
+- Angle can go past >360
+- 30 Seconds"
+
+[node name="hard" type="Button" parent="difficulties"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Hard:
+- Sin Cos Tan &
+Csc Sec Cot
+- Angle can go past >360
+- 60 seconds"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -423.0
+offset_top = 100.0
+offset_right = 444.0
+offset_bottom = 250.0
+grow_horizontal = 2
+text = "Select Difficulty:"
+label_settings = SubResource("LabelSettings_31shr")

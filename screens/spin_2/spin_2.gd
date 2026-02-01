@@ -16,9 +16,7 @@ class_name Spingononmetry2
 @onready var time_left_label: Label = %time_left_label
 @onready var skip_timer_button: TouchScreenButton = %skip_timer
 
-enum difficulties {
-	EASY, MEDIUM, HARD
-}
+
 enum angle_modes {
 	DEGREES, RADIANS
 }
@@ -26,7 +24,6 @@ enum trig_funcs {
 	SIN, COS, TAN, CSC, SEC, COT
 }
 
-var current_difficulty : difficulties = difficulties.EASY
 var current_angle_mode : angle_modes = angle_modes.DEGREES
 var current_trig_func : trig_funcs = trig_funcs.SIN
 var last_sector : int = -1
@@ -47,6 +44,8 @@ func _ready() -> void:
 	wheel_rot_accel_timer.timeout.connect(_wheel_rot_accel_timer_timeout)
 	arrow.global_position.y = sect_6_wheel.global_position.y
 	answer_timer.timeout.connect(_answer_times_up)
+	
+	print(Global.current_difficulty)
 
 func _process(delta: float) -> void:
 	_sector_handling()
@@ -105,7 +104,7 @@ func _input(event: InputEvent) -> void:
 		_choose_angle()
 	
 	if Input.is_action_just_pressed("ESC"):
-		Global.change_scene("res://screens/title/title_screen.tscn")
+		Global.change_scene("res://screens/difficulty_select/difficulty_select.tscn")
 	
 	if Input.is_action_just_pressed("start_timer"):
 		_start_timer()
@@ -176,12 +175,12 @@ func _get_answer() -> void:
 
 func _start_timer() -> void:
 	%clock_ticking.play()
-	match current_difficulty:
-		difficulties.EASY:
+	match Global.current_difficulty:
+		Global.difficulties.EASY:
 			answer_timer.start(difficulty_times["easy"])
-		difficulties.MEDIUM:
+		Global.difficulties.MEDIUM:
 			answer_timer.start(difficulty_times["medium"])
-		difficulties.HARD:
+		Global.difficulties.HARD:
 			answer_timer.start(difficulty_times["hard"])
 
 func _skip_timer() -> void:

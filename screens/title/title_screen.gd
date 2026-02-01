@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _on_play_pressed() -> void:
 	#Global.change_scene("res://screens/spingonometry/spingonometry.tscn")
-	Global.change_scene("res://screens/spin_2/spin_2.tscn")
+	Global.change_scene("res://screens/difficulty_select/difficulty_select.tscn")
 
 func _how2play_pressed() -> void:
 	%h2pPanel.show()
