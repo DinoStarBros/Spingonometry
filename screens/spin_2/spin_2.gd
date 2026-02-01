@@ -4,6 +4,9 @@ class_name Spingononmetry2
 @onready var sect_6_wheel: Sect6Wheel = %sect6_wheel
 @onready var wheel_rot_accel_timer: Timer = %wheel_rot_accel_timer
 @onready var arrow: Sprite2D = %arrow
+@onready var angles_arrays: AngleArrays = %angles_arrays
+@onready var angle_arrow_pivot: Node2D = %angle_arrow_pivot
+@onready var angle_label: Label = %angle_label
 
 enum difficulties {
 	EASY, MEDIUM, HARD
@@ -15,6 +18,7 @@ enum angle_modes {
 var current_difficulty : difficulties = difficulties.EASY
 var current_angle_mode : angle_modes = angle_modes.DEGREES
 var last_sector : int = -1
+var desired_rot_deg_arrow_ap : float
 
 const wheelRotVel_Range : Vector2 = Vector2(1000, 2000)
 const wheelRotAccelTime_Range : Vector2 = Vector2(1,2)
@@ -25,6 +29,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_sector_handling()
+	
 	if current_angle_mode == angle_modes.DEGREES:
 		%deg_or_rad.text = str(
 			"Angle mode:
@@ -35,10 +40,14 @@ func _process(delta: float) -> void:
 			"Angle mode:
 			Radians"
 		)
+	
+	angle_arrow_pivot.rotation_degrees = lerp(angle_arrow_pivot.rotation_degrees, desired_rot_deg_arrow_ap, 6 * delta)
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("spin") and !sect_6_wheel.is_rotation_accelerating:
 		_spin()
 		_deg_or_rad()
+		_choose_angle()
 	
 	if Input.is_action_just_pressed("ESC"):
 		Global.change_scene("res://screens/title/title_screen.tscn")
@@ -72,4 +81,17 @@ func _deg_or_rad() -> void:
 		current_angle_mode = angle_modes.RADIANS
 
 func _choose_angle() -> void:
-	pass
+	var angle_index : int = randi_range(0,32)
+	
+	prints(
+		angles_arrays.degree_floats[angle_index],
+		angles_arrays.degrees_strings[angle_index],
+		angles_arrays.radians_strings[angle_index],
+		)
+	
+	desired_rot_deg_arrow_ap = -angles_arrays.degree_floats[angle_index]
+	
+	if current_angle_mode == angle_modes.DEGREES:
+		angle_label.text = str(angles_arrays.degrees_strings[angle_index])
+	else:
+		angle_label.text = str(angles_arrays.radians_strings[angle_index])

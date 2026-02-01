@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwge7tkafeews"]
+[gd_scene load_steps=22 format=3 uid="uid://dwge7tkafeews"]
 
 [ext_resource type="Script" uid="uid://dhx4wr20mmt4" path="res://screens/spin_2/spin_2.gd" id="1_wi6rd"]
 [ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/6sect_wheel.gd" id="2_u7hj5"]
@@ -112,6 +112,11 @@ shader_parameter/lighting = 0.4
 shader_parameter/spin_amount = 0.25
 shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_1mgeg"]
+font_size = 100
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [node name="spin2" type="Control"]
 layout_mode = 3
@@ -591,4 +596,25 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="angles_arrays" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("9_ixtux")
+
+[node name="angle_label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 569.0
+offset_top = 170.0
+offset_right = 641.0
+offset_bottom = 271.0
+text = "0°"
+label_settings = SubResource("LabelSettings_1mgeg")
+
+[node name="angle_arrow_pivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1440, 526)
+
+[node name="angle_arrow" type="Sprite2D" parent="angle_arrow_pivot"]
+position = Vector2(442, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("5_sony7")
+flip_h = true
