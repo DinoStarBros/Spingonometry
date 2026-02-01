@@ -93,7 +93,7 @@ font_size = 100
 font_size = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixtux"]
-size = Vector2(200, 100)
+size = Vector2(420, 120)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ixtux"]
 font_size = 100
@@ -117,6 +117,8 @@ shader_parameter/is_rotating = true
 font_size = 100
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.24269372, 0.24269372, 0.24269372, 1)
+shadow_offset = Vector2(-6.47, 10.935)
 
 [node name="spin2" type="Control"]
 layout_mode = 3
@@ -251,6 +253,7 @@ scale = Vector2(1.03, 1.03)
 script = ExtResource("4_iiutg")
 
 [node name="angle_mode" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 600.0
 offset_top = 451.0
@@ -278,7 +281,7 @@ Degrees"
 label_settings = SubResource("LabelSettings_7narw")
 
 [node name="angle_wheel" type="Node2D" parent="."]
-position = Vector2(1440, 526)
+position = Vector2(1126, 526)
 scale = Vector2(2, 2)
 script = ExtResource("8_yj1vx")
 
@@ -548,24 +551,25 @@ offset_bottom = 31.058817
 text = "330"
 label_settings = SubResource("LabelSettings_yj1vx")
 
-[node name="start" type="TouchScreenButton" parent="."]
-position = Vector2(780, 939)
+[node name="get_problem" type="TouchScreenButton" parent="."]
+unique_name_in_owner = true
+position = Vector2(340, 889)
 shape = SubResource("RectangleShape2D_ixtux")
 action = "spin"
 
-[node name="ColorRect" type="ColorRect" parent="start"]
-offset_left = -100.0
+[node name="ColorRect" type="ColorRect" parent="get_problem"]
+offset_left = -205.0
 offset_top = -50.0
-offset_right = 100.0
+offset_right = 205.0
 offset_bottom = 50.0
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="start"]
-offset_left = -96.0
+[node name="Label" type="Label" parent="get_problem"]
+offset_left = -202.0
 offset_top = -50.0
-offset_right = 98.0
+offset_right = 204.0
 offset_bottom = 51.0
-text = "Start"
+text = "Get Problem"
 label_settings = SubResource("LabelSettings_ixtux")
 
 [node name="sfx" type="Node" parent="."]
@@ -599,22 +603,32 @@ mouse_filter = 2
 unique_name_in_owner = true
 script = ExtResource("9_ixtux")
 
-[node name="angle_label" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 569.0
-offset_top = 170.0
-offset_right = 641.0
-offset_bottom = 271.0
-text = "0°"
-label_settings = SubResource("LabelSettings_1mgeg")
-
 [node name="angle_arrow_pivot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1440, 526)
+position = Vector2(1123, 526)
 
 [node name="angle_arrow" type="Sprite2D" parent="angle_arrow_pivot"]
 position = Vector2(442, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("5_sony7")
 flip_h = true
+
+[node name="angle_label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1085.0
+offset_top = 462.0
+offset_right = 1157.0
+offset_bottom = 563.0
+text = "0°"
+label_settings = SubResource("LabelSettings_1mgeg")
+
+[node name="trig_func_label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 207.0
+offset_top = 609.0
+offset_right = 340.0
+offset_bottom = 710.0
+text = "Sine"
+label_settings = SubResource("LabelSettings_1mgeg")

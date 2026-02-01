@@ -7,6 +7,8 @@ class_name Spingononmetry2
 @onready var angles_arrays: AngleArrays = %angles_arrays
 @onready var angle_arrow_pivot: Node2D = %angle_arrow_pivot
 @onready var angle_label: Label = %angle_label
+@onready var trig_func_label: Label = %trig_func_label
+@onready var get_problem_button: TouchScreenButton = %get_problem
 
 enum difficulties {
 	EASY, MEDIUM, HARD
@@ -41,8 +43,17 @@ func _process(delta: float) -> void:
 			Radians"
 		)
 	
-	angle_arrow_pivot.rotation_degrees = lerp(angle_arrow_pivot.rotation_degrees, desired_rot_deg_arrow_ap, 6 * delta)
-
+	angle_arrow_pivot.rotation_degrees = lerp(angle_arrow_pivot.rotation_degrees, desired_rot_deg_arrow_ap, 3 * delta)
+	trig_func_label.visible = !sect_6_wheel.is_spinning
+	
+	if sect_6_wheel.is_spinning:
+		get_problem_button.global_position = get_problem_button.global_position.lerp(
+			Vector2(340, 1500), 12 * delta
+		)
+	else:
+		get_problem_button.global_position = get_problem_button.global_position.lerp(
+			Vector2(340, 889), 12 * delta
+		)
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("spin") and !sect_6_wheel.is_rotation_accelerating:
 		_spin()
@@ -82,12 +93,6 @@ func _deg_or_rad() -> void:
 
 func _choose_angle() -> void:
 	var angle_index : int = randi_range(0,32)
-	
-	prints(
-		angles_arrays.degree_floats[angle_index],
-		angles_arrays.degrees_strings[angle_index],
-		angles_arrays.radians_strings[angle_index],
-		)
 	
 	desired_rot_deg_arrow_ap = -angles_arrays.degree_floats[angle_index]
 	
