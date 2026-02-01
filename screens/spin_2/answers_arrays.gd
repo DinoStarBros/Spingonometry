@@ -224,7 +224,7 @@ var cot_answers := [
 	"undefined"     # 720° -> 4π
 ]
 
-var trig_funcs_array : Array = [
+var trig_funcs_array : Array[Array] = [
 	sin_answers,
 	cos_answers,
 	tan_answers,

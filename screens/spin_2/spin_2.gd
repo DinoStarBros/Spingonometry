@@ -20,12 +20,15 @@ class_name Spingononmetry2
 enum angle_modes {
 	DEGREES, RADIANS
 }
-enum trig_funcs {
+enum trig_funcs_hard {
 	SIN, COS, TAN, CSC, SEC, COT
+}
+enum trig_funcs_not_hard {
+	SIN, COS, TAN
 }
 
 var current_angle_mode : angle_modes = angle_modes.DEGREES
-var current_trig_func : trig_funcs = trig_funcs.SIN
+var current_trig_func : int = trig_funcs_hard.SIN
 var last_sector : int = -1
 var desired_rot_deg_arrow_ap : float
 var time_started : float
@@ -133,20 +136,32 @@ func _sector_handling() -> void:
 		%arrownim.play("nod")
 		last_sector = current_sector
 	
-	current_trig_func = current_sector as trig_funcs
-	match current_trig_func:
-		trig_funcs.SIN:
-			trig_func_label.text = str("SIN")
-		trig_funcs.COS:
-			trig_func_label.text = str("COS")
-		trig_funcs.TAN:
-			trig_func_label.text = str("TAN")
-		trig_funcs.CSC:
-			trig_func_label.text = str("CSC")
-		trig_funcs.SEC:
-			trig_func_label.text = str("SEC")
-		trig_funcs.COT:
-			trig_func_label.text = str("COT")
+	if Global.current_difficulty == Global.difficulties.HARD:
+		current_trig_func = current_sector as trig_funcs_hard
+		match current_trig_func:
+			trig_funcs_hard.SIN:
+				trig_func_label.text = str("SIN")
+			trig_funcs_hard.COS:
+				trig_func_label.text = str("COS")
+			trig_funcs_hard.TAN:
+				trig_func_label.text = str("TAN")
+			trig_funcs_hard.CSC:
+				trig_func_label.text = str("CSC")
+			trig_funcs_hard.SEC:
+				trig_func_label.text = str("SEC")
+			trig_funcs_hard.COT:
+				trig_func_label.text = str("COT")
+		
+	else:
+		current_trig_func = (current_sector % 3) as trig_funcs_not_hard
+		match current_trig_func:
+			trig_funcs_not_hard.SIN:
+				trig_func_label.text = str("SIN")
+			trig_funcs_not_hard.COS:
+				trig_func_label.text = str("COS")
+			trig_funcs_not_hard.TAN:
+				trig_func_label.text = str("TAN")
+
 
 func _spin() -> void:
 	sect_6_wheel.rotation_velocity = randf_range(wheelRotVel_Range.x, wheelRotVel_Range.y)
@@ -156,10 +171,10 @@ func _spin() -> void:
 func _deg_or_rad() -> void:
 	%angle_mode_anim.play("select")
 	
-	if randi_range(1,3) == 1:
-		current_angle_mode = angle_modes.DEGREES
-	else:
+	if randi_range(1,2) == 1:
 		current_angle_mode = angle_modes.RADIANS
+	else:
+		current_angle_mode = angle_modes.DEGREES
 
 func _choose_angle() -> void:
 	match Global.current_difficulty:
