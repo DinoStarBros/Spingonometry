@@ -14,6 +14,7 @@ class_name Spingononmetry2
 @onready var answer_label: Label = %answer_label
 @onready var answer_timer: Timer = %answer_timer
 @onready var time_left_label: Label = %time_left_label
+@onready var skip_timer_button: TouchScreenButton = %skip_timer
 
 enum difficulties {
 	EASY, MEDIUM, HARD
@@ -25,7 +26,7 @@ enum trig_funcs {
 	SIN, COS, TAN, CSC, SEC, COT
 }
 
-var current_difficulty : difficulties = difficulties.HARD
+var current_difficulty : difficulties = difficulties.EASY
 var current_angle_mode : angle_modes = angle_modes.DEGREES
 var current_trig_func : trig_funcs = trig_funcs.SIN
 var last_sector : int = -1
@@ -64,7 +65,8 @@ func _process(delta: float) -> void:
 	angle_arrow_pivot.rotation_degrees = lerp(angle_arrow_pivot.rotation_degrees, desired_rot_deg_arrow_ap, 3 * delta)
 	#trig_func_label.visible = !sect_6_wheel.is_spinning
 	
-	if sect_6_wheel.is_spinning:
+	if sect_6_wheel.is_spinning or (answer_timer.time_left) > 0.1:
+		# BUTTONS HIDING
 		get_problem_button.global_position = get_problem_button.global_position.lerp(
 			Vector2(get_problem_button.global_position.x, 1500), 12 * delta)
 		
@@ -72,6 +74,7 @@ func _process(delta: float) -> void:
 			Vector2(start_timer_button.global_position.x, 1500), 12 * delta)
 		
 	else:
+		# BUTTONS SHOWING
 		get_problem_button.global_position = get_problem_button.global_position.lerp(
 			Vector2(get_problem_button.global_position.x, 889), 12 * delta)
 		
@@ -85,13 +88,16 @@ func _process(delta: float) -> void:
 		_get_answer()
 	
 	time_left_label.text = str(
+		"Time left: \n",
 		snappedf(answer_timer.time_left, 0.01)
 		)
 	time_left_label.visible = (answer_timer.time_left) > 0.1
+	skip_timer_button.visible = (answer_timer.time_left) > 0.1
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("spin") and !sect_6_wheel.is_rotation_accelerating:
 		answer_label.hide()
+		show_answer = false
 		_spin()
 		_deg_or_rad()
 		_choose_angle()
@@ -101,6 +107,9 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("start_timer"):
 		_start_timer()
+	
+	if Input.is_action_just_pressed("skip_timer"):
+		_skip_timer()
 
 func _wheel_rot_accel_timer_timeout() -> void:
 	sect_6_wheel.is_rotation_accelerating = false
@@ -164,6 +173,7 @@ func _get_answer() -> void:
 	)
 
 func _start_timer() -> void:
+	%clock_ticking.play()
 	match current_difficulty:
 		difficulties.EASY:
 			answer_timer.start(difficulty_times["easy"])
@@ -172,5 +182,10 @@ func _start_timer() -> void:
 		difficulties.HARD:
 			answer_timer.start(difficulty_times["hard"])
 
+func _skip_timer() -> void:
+	answer_timer.start(0.1)
+
 func _answer_times_up() -> void:
-	pass
+	%clock_ticking.stop()
+	%times_up.play(1.35)
+	show_answer = true
