@@ -91,8 +91,10 @@ func _process(delta: float) -> void:
 		"Time left: \n",
 		snappedf(answer_timer.time_left, 0.01)
 		)
+	
 	time_left_label.visible = (answer_timer.time_left) > 0.1
 	skip_timer_button.visible = (answer_timer.time_left) > 0.1
+	start_timer_button.visible = !show_answer
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("spin") and !sect_6_wheel.is_rotation_accelerating:
