@@ -13,7 +13,7 @@ enum angle_modes {
 }
 
 var current_difficulty : difficulties = difficulties.EASY
-var current_anglemode : angle_modes = angle_modes.DEGREES
+var current_angle_mode : angle_modes = angle_modes.DEGREES
 var last_sector : int = -1
 
 const wheelRotVel_Range : Vector2 = Vector2(1000, 2000)
@@ -25,7 +25,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_sector_handling()
-
+	if current_angle_mode == angle_modes.DEGREES:
+		%deg_or_rad.text = str(
+			"Angle mode:
+			Degrees"
+		)
+	else:
+		%deg_or_rad.text = str(
+			"Angle mode:
+			Radians"
+		)
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("spin") and !sect_6_wheel.is_rotation_accelerating:
 		_spin()
@@ -55,4 +64,9 @@ func _spin() -> void:
 	wheel_rot_accel_timer.start(randf_range(wheelRotAccelTime_Range.x, wheelRotAccelTime_Range.y))
 
 func _deg_or_rad() -> void:
-	pass
+	%angle_mode_anim.play("select")
+	
+	if randi_range(1,3) == 1:
+		current_angle_mode = angle_modes.DEGREES
+	else:
+		current_angle_mode = angle_modes.RADIANS

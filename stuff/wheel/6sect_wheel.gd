@@ -1,9 +1,9 @@
-@tool
 extends Node2D
 class_name Sect6Wheel
 
 var rotation_velocity : float
 var is_rotation_accelerating : bool = false
+var is_spinning : bool = false
 
 var COLORS : Array = [
 	Color.RED,
@@ -35,6 +35,8 @@ func _draw():
 		draw_polygon(points, [COLORS[i]])
 
 func _process(delta: float) -> void:
+	is_spinning = abs(rotation_velocity) > 1
+	
 	_rotate_delta(delta)
 	
 	if !is_rotation_accelerating:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwge7tkafeews"]
+[gd_scene load_steps=21 format=3 uid="uid://dwge7tkafeews"]
 
 [ext_resource type="Script" uid="uid://dhx4wr20mmt4" path="res://screens/spin_2/spin_2.gd" id="1_wi6rd"]
 [ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/6sect_wheel.gd" id="2_u7hj5"]
@@ -48,11 +48,55 @@ _data = {
 &"nod": SubResource("Animation_j6yei")
 }
 
+[sub_resource type="Animation" id="Animation_7narw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(600, 451)]
+}
+
+[sub_resource type="Animation" id="Animation_ixtux"]
+resource_name = "select"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(600, 451), Vector2(600, 422.045), Vector2(600, 451)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7narw"]
+_data = {
+&"RESET": SubResource("Animation_7narw"),
+&"select": SubResource("Animation_ixtux")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_7narw"]
 font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_yj1vx"]
 font_size = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixtux"]
+size = Vector2(200, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixtux"]
+font_size = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sony7"]
 resource_local_to_scene = true
@@ -69,12 +113,6 @@ shader_parameter/spin_amount = 0.25
 shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixtux"]
-size = Vector2(200, 100)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ixtux"]
-font_size = 100
-
 [node name="spin2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -87,7 +125,7 @@ script = ExtResource("1_wi6rd")
 [node name="arrow" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(719, 354)
+position = Vector2(595, 355)
 scale = Vector2(2, 2)
 texture = ExtResource("5_sony7")
 flip_h = true
@@ -100,7 +138,8 @@ libraries = {
 
 [node name="sect6_wheel" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(399, 354)
+position = Vector2(281.00003, 355.00003)
+rotation = 0.7853982
 scale = Vector2(1.3, 1.3)
 script = ExtResource("2_u7hj5")
 
@@ -206,18 +245,35 @@ z_index = -1
 scale = Vector2(1.03, 1.03)
 script = ExtResource("4_iiutg")
 
-[node name="deg_or_rad" type="Label" parent="."]
+[node name="angle_mode" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 693.0
-offset_top = 396.0
-offset_right = 1076.0
-offset_bottom = 601.0
+offset_left = 600.0
+offset_top = 451.0
+offset_right = 996.0
+offset_bottom = 663.99915
+rotation = 6.2831855
+color = Color(0, 0, 0, 1)
+
+[node name="angle_mode_anim" type="AnimationPlayer" parent="angle_mode"]
+unique_name_in_owner = true
+root_node = NodePath("../deg_or_rad")
+libraries = {
+&"": SubResource("AnimationLibrary_7narw")
+}
+
+[node name="deg_or_rad" type="Label" parent="angle_mode"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 393.0
+offset_bottom = 206.0
 text = "Angle Mode:
 Degrees"
 label_settings = SubResource("LabelSettings_7narw")
 
 [node name="angle_wheel" type="Node2D" parent="."]
-position = Vector2(1497, 449)
+position = Vector2(1440, 526)
 scale = Vector2(2, 2)
 script = ExtResource("8_yj1vx")
 
@@ -487,6 +543,37 @@ offset_bottom = 31.058817
 text = "330"
 label_settings = SubResource("LabelSettings_yj1vx")
 
+[node name="angles_arrays" type="Node2D" parent="."]
+script = ExtResource("9_ixtux")
+
+[node name="start" type="TouchScreenButton" parent="."]
+position = Vector2(780, 939)
+shape = SubResource("RectangleShape2D_ixtux")
+action = "spin"
+
+[node name="ColorRect" type="ColorRect" parent="start"]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="start"]
+offset_left = -96.0
+offset_top = -50.0
+offset_right = 98.0
+offset_bottom = 51.0
+text = "Start"
+label_settings = SubResource("LabelSettings_ixtux")
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="spinClick" type="AudioStreamPlayer" parent="sfx"]
+unique_name_in_owner = true
+stream = ExtResource("7_j6yei")
+pitch_scale = 5.0
+bus = &"SFX"
+
 [node name="wheel_rot_accel_timer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
@@ -505,32 +592,3 @@ offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="spinClick" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("7_j6yei")
-pitch_scale = 5.0
-bus = &"SFX"
-
-[node name="angles_arrays" type="Node2D" parent="."]
-script = ExtResource("9_ixtux")
-
-[node name="start" type="TouchScreenButton" parent="."]
-position = Vector2(880, 889)
-shape = SubResource("RectangleShape2D_ixtux")
-action = "spin"
-
-[node name="ColorRect" type="ColorRect" parent="start"]
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = 50.0
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="start"]
-offset_left = -96.0
-offset_top = -50.0
-offset_right = 98.0
-offset_bottom = 51.0
-text = "Start"
-label_settings = SubResource("LabelSettings_ixtux")
