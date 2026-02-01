@@ -45,7 +45,14 @@ func _ready() -> void:
 	arrow.global_position.y = sect_6_wheel.global_position.y
 	answer_timer.timeout.connect(_answer_times_up)
 	
-	print(Global.current_difficulty)
+	if Global.current_difficulty == Global.difficulties.HARD:
+		%csc.text = str("Cosecant")
+		%sec.text = str("Secant")
+		%cot.text = str("Cotangent")
+	else:
+		%csc.text = str("Sine")
+		%sec.text = str("Cosine")
+		%cot.text = str("Tangent")
 
 func _process(delta: float) -> void:
 	_sector_handling()
@@ -127,7 +134,6 @@ func _sector_handling() -> void:
 		last_sector = current_sector
 	
 	current_trig_func = current_sector as trig_funcs
-	#prints(current_sector, current_trig_func)
 	match current_trig_func:
 		trig_funcs.SIN:
 			trig_func_label.text = str("SIN")
@@ -156,7 +162,13 @@ func _deg_or_rad() -> void:
 		current_angle_mode = angle_modes.RADIANS
 
 func _choose_angle() -> void:
-	angle_index = randi_range(0,32)
+	match Global.current_difficulty:
+		Global.difficulties.EASY:
+			angle_index = randi_range(0,16)
+		Global.difficulties.MEDIUM:
+			angle_index = randi_range(0,32)
+		Global.difficulties.HARD:
+			angle_index = randi_range(0,32)
 	
 	desired_rot_deg_arrow_ap = -angles_arrays.degree_floats[angle_index]
 	

@@ -168,7 +168,8 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 1.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fate" type="Label" parent="sect6_wheel/l1"]
+[node name="cot" type="Label" parent="sect6_wheel/l1"]
+unique_name_in_owner = true
 offset_left = 12.512222
 offset_right = 99.51222
 offset_bottom = 26.0
@@ -184,7 +185,8 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 1.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fate" type="Label" parent="sect6_wheel/l2"]
+[node name="sec" type="Label" parent="sect6_wheel/l2"]
+unique_name_in_owner = true
 offset_left = 19.8
 offset_right = 66.8
 offset_bottom = 23.0
@@ -200,7 +202,8 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 1.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fate" type="Label" parent="sect6_wheel/l3"]
+[node name="csc" type="Label" parent="sect6_wheel/l3"]
+unique_name_in_owner = true
 offset_left = 9.8934765
 offset_top = -0.06835079
 offset_right = 87.89348
@@ -217,7 +220,7 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 1.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fate" type="Label" parent="sect6_wheel/l4"]
+[node name="tan" type="Label" parent="sect6_wheel/l4"]
 offset_left = 19.8
 offset_right = 66.8
 offset_bottom = 23.0
@@ -233,7 +236,7 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 1.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fate" type="Label" parent="sect6_wheel/l5"]
+[node name="cos" type="Label" parent="sect6_wheel/l5"]
 offset_left = 19.8
 offset_right = 66.8
 offset_bottom = 23.0
@@ -249,7 +252,7 @@ points = PackedVector2Array(0, 0, 65, 0)
 width = 1.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fate" type="Label" parent="sect6_wheel/l6"]
+[node name="sin" type="Label" parent="sect6_wheel/l6"]
 offset_left = 12.7241535
 offset_top = 0.10336137
 offset_right = 99.72415
