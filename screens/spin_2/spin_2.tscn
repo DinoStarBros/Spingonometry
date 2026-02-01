@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwge7tkafeews"]
+[gd_scene load_steps=18 format=3 uid="uid://dwge7tkafeews"]
 
 [ext_resource type="Script" uid="uid://dhx4wr20mmt4" path="res://screens/spin_2/spin_2.gd" id="1_wi6rd"]
 [ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/6sect_wheel.gd" id="2_u7hj5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cwefwfcistj05" path="res://Art/Stuff2/heart_javelin.png" id="5_sony7"]
 [ext_resource type="AudioStream" uid="uid://dtq0aduiy7nn4" path="res://Audio/gunshot.wav" id="7_j6yei"]
 [ext_resource type="Script" uid="uid://heq2ivh83wkj" path="res://stuff/wheel/angles_wheel.gd" id="8_yj1vx"]
+[ext_resource type="Script" uid="uid://dxf0o0am5n8o1" path="res://screens/spin_2/angles_arrays.gd" id="9_ixtux"]
 
 [sub_resource type="Animation" id="Animation_yj1vx"]
 length = 0.001
@@ -47,14 +48,11 @@ _data = {
 &"nod": SubResource("Animation_j6yei")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ej073"]
-radius = 340.0
+[sub_resource type="LabelSettings" id="LabelSettings_7narw"]
+font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_yj1vx"]
 font_size = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_iiutg"]
-font_size = 56
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sony7"]
 resource_local_to_scene = true
@@ -70,6 +68,12 @@ shader_parameter/lighting = 0.4
 shader_parameter/spin_amount = 0.25
 shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixtux"]
+size = Vector2(200, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixtux"]
+font_size = 100
 
 [node name="spin2" type="Control"]
 layout_mode = 3
@@ -202,15 +206,19 @@ z_index = -1
 scale = Vector2(1.03, 1.03)
 script = ExtResource("4_iiutg")
 
-[node name="clickWheel" type="TouchScreenButton" parent="sect6_wheel"]
-z_index = 4
-scale = Vector2(0.76923084, 0.76923084)
-shape = SubResource("CircleShape2D_ej073")
-action = "spin"
+[node name="deg_or_rad" type="Label" parent="."]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 396.0
+offset_right = 1076.0
+offset_bottom = 601.0
+text = "Angle Mode:
+Degrees"
+label_settings = SubResource("LabelSettings_7narw")
 
 [node name="angle_wheel" type="Node2D" parent="."]
-position = Vector2(1338, 535)
-scale = Vector2(2.15, 2.15)
+position = Vector2(1497, 449)
+scale = Vector2(2, 2)
 script = ExtResource("8_yj1vx")
 
 [node name="0" type="Line2D" parent="angle_wheel"]
@@ -220,6 +228,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg0" type="Label" parent="angle_wheel/0"]
+visible = false
 offset_left = 65.71642
 offset_top = -8.252063
 offset_right = 71.71642
@@ -235,6 +244,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg30" type="Label" parent="angle_wheel/0/30"]
+visible = false
 offset_left = 65.81712
 offset_top = -6.871805
 offset_right = 77.81712
@@ -251,6 +261,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg45" type="Label" parent="angle_wheel/0/45"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -267,6 +278,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg60" type="Label" parent="angle_wheel/0/60"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -282,6 +294,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg90" type="Label" parent="angle_wheel/90"]
+visible = false
 offset_left = 65.777374
 offset_top = -5.9411774
 offset_right = 77.777374
@@ -298,6 +311,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg120" type="Label" parent="angle_wheel/90/120"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -313,6 +327,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg135" type="Label" parent="angle_wheel/90/135"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -329,6 +344,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg150" type="Label" parent="angle_wheel/90/150"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -344,6 +360,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg180" type="Label" parent="angle_wheel/180"]
+visible = false
 offset_left = 65.777374
 offset_top = -5.941185
 offset_right = 77.777374
@@ -360,6 +377,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg210" type="Label" parent="angle_wheel/180/210"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -377,6 +395,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg225" type="Label" parent="angle_wheel/180/225"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -393,6 +412,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg240" type="Label" parent="angle_wheel/180/240"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -409,6 +429,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg270" type="Label" parent="angle_wheel/270"]
+visible = false
 offset_left = 65.777374
 offset_top = -5.9411774
 offset_right = 77.777374
@@ -424,6 +445,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg300" type="Label" parent="angle_wheel/270/300"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -440,6 +462,7 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg315" type="Label" parent="angle_wheel/270/315"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
@@ -456,20 +479,13 @@ width = 0.5
 default_color = Color(0, 0, 0, 1)
 
 [node name="deg330" type="Label" parent="angle_wheel/270/330"]
+visible = false
 offset_left = 65.77738
 offset_top = -5.9411826
 offset_right = 77.77738
 offset_bottom = 31.058817
 text = "330"
 label_settings = SubResource("LabelSettings_yj1vx")
-
-[node name="Label" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 17.0
-text = "0.0"
-label_settings = SubResource("LabelSettings_iiutg")
 
 [node name="wheel_rot_accel_timer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -482,10 +498,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -272.0
-offset_right = 45.0
-offset_bottom = 267.0
+offset_left = -70.0
+offset_top = -265.0
+offset_right = 31.0
+offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -495,3 +511,26 @@ unique_name_in_owner = true
 stream = ExtResource("7_j6yei")
 pitch_scale = 5.0
 bus = &"SFX"
+
+[node name="angles_arrays" type="Node2D" parent="."]
+script = ExtResource("9_ixtux")
+
+[node name="start" type="TouchScreenButton" parent="."]
+position = Vector2(880, 889)
+shape = SubResource("RectangleShape2D_ixtux")
+action = "spin"
+
+[node name="ColorRect" type="ColorRect" parent="start"]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="start"]
+offset_left = -96.0
+offset_top = -50.0
+offset_right = 98.0
+offset_bottom = 51.0
+text = "Start"
+label_settings = SubResource("LabelSettings_ixtux")
