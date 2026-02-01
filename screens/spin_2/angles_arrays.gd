@@ -1,4 +1,5 @@
 extends Node2D
+## Class that contains all the possible angles & shit
 class_name AngleArrays
 
 ## Degrees from 0° → 720°, in increments of original unit circle angles

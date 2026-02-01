@@ -35,7 +35,7 @@ func _draw():
 		draw_polygon(points, [COLORS[i]])
 
 func _process(delta: float) -> void:
-	is_spinning = abs(rotation_velocity) > 1
+	is_spinning = abs(rotation_velocity) > 0.5
 	
 	_rotate_delta(delta)
 	

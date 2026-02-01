@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwge7tkafeews"]
+[gd_scene load_steps=25 format=3 uid="uid://dwge7tkafeews"]
 
 [ext_resource type="Script" uid="uid://dhx4wr20mmt4" path="res://screens/spin_2/spin_2.gd" id="1_wi6rd"]
 [ext_resource type="Script" uid="uid://bweh8jvtipns3" path="res://stuff/wheel/6sect_wheel.gd" id="2_u7hj5"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dtq0aduiy7nn4" path="res://Audio/gunshot.wav" id="7_j6yei"]
 [ext_resource type="Script" uid="uid://heq2ivh83wkj" path="res://stuff/wheel/angles_wheel.gd" id="8_yj1vx"]
 [ext_resource type="Script" uid="uid://dxf0o0am5n8o1" path="res://screens/spin_2/angles_arrays.gd" id="9_ixtux"]
+[ext_resource type="Script" uid="uid://dorb4npwwxbl8" path="res://screens/spin_2/answers_arrays.gd" id="10_7narw"]
 
 [sub_resource type="Animation" id="Animation_yj1vx"]
 length = 0.001
@@ -93,10 +94,16 @@ font_size = 100
 font_size = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixtux"]
-size = Vector2(420, 120)
+size = Vector2(400, 120)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ixtux"]
 font_size = 100
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mgeg"]
+size = Vector2(400, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7narw"]
+size = Vector2(170, 120)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sony7"]
 resource_local_to_scene = true
@@ -281,7 +288,7 @@ Degrees"
 label_settings = SubResource("LabelSettings_7narw")
 
 [node name="angle_wheel" type="Node2D" parent="."]
-position = Vector2(1126, 526)
+position = Vector2(1115, 419)
 scale = Vector2(2, 2)
 script = ExtResource("8_yj1vx")
 
@@ -572,6 +579,49 @@ offset_bottom = 51.0
 text = "Get Problem"
 label_settings = SubResource("LabelSettings_ixtux")
 
+[node name="start_timer" type="TouchScreenButton" parent="."]
+unique_name_in_owner = true
+position = Vector2(814, 889)
+shape = SubResource("RectangleShape2D_1mgeg")
+action = "start_timer"
+
+[node name="ColorRect" type="ColorRect" parent="start_timer"]
+offset_left = -205.0
+offset_top = -50.0
+offset_right = 205.0
+offset_bottom = 50.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="start_timer"]
+offset_left = -202.0
+offset_top = -50.0
+offset_right = 204.0
+offset_bottom = 51.0
+text = "Start Timer"
+label_settings = SubResource("LabelSettings_ixtux")
+
+[node name="exit" type="TouchScreenButton" parent="."]
+unique_name_in_owner = true
+position = Vector2(1829, 64.00012)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("RectangleShape2D_7narw")
+action = "ESC"
+
+[node name="ColorRect" type="ColorRect" parent="exit"]
+offset_left = -78.5715
+offset_top = -50.0
+offset_right = 80.714264
+offset_bottom = 50.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="exit/ColorRect"]
+layout_mode = 0
+offset_left = 12.143032
+offset_right = 151.14304
+offset_bottom = 101.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_ixtux")
+
 [node name="sfx" type="Node" parent="."]
 
 [node name="spinClick" type="AudioStreamPlayer" parent="sfx"]
@@ -603,9 +653,13 @@ mouse_filter = 2
 unique_name_in_owner = true
 script = ExtResource("9_ixtux")
 
+[node name="answers_arrays" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_7narw")
+
 [node name="angle_arrow_pivot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1123, 526)
+position = Vector2(1115, 419)
 
 [node name="angle_arrow" type="Sprite2D" parent="angle_arrow_pivot"]
 position = Vector2(442, 0)
@@ -616,10 +670,10 @@ flip_h = true
 [node name="angle_label" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1085.0
-offset_top = 462.0
-offset_right = 1157.0
-offset_bottom = 563.0
+offset_left = 1089.0
+offset_top = 368.0
+offset_right = 1161.0
+offset_bottom = 469.0
 text = "0°"
 label_settings = SubResource("LabelSettings_1mgeg")
 
@@ -631,4 +685,29 @@ offset_top = 609.0
 offset_right = 340.0
 offset_bottom = 710.0
 text = "Sine"
+label_settings = SubResource("LabelSettings_1mgeg")
+
+[node name="answer_label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1089.0
+offset_top = 839.0
+offset_right = 1828.0
+offset_bottom = 940.0
+text = "Final Answer: \\u221A5"
+label_settings = SubResource("LabelSettings_1mgeg")
+
+[node name="answer_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="time_left_label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1493.0
+offset_top = 609.0
+offset_right = 1837.0
+offset_bottom = 814.0
+text = "Time Left:
+2"
 label_settings = SubResource("LabelSettings_1mgeg")
