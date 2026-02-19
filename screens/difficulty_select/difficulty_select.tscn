@@ -95,7 +95,7 @@ theme_override_font_sizes/font_size = 60
 text = "Easy:
 - Sin Cos Tan
 - Angle can't go past 360
-- 15 seconds"
+- 30 seconds"
 
 [node name="medium" type="Button" parent="difficulties"]
 unique_name_in_owner = true
@@ -104,7 +104,7 @@ theme_override_font_sizes/font_size = 60
 text = "Medium:
 - Sin Cos Tan
 - Angle can go past >360
-- 30 Seconds"
+- 60 Seconds"
 
 [node name="hard" type="Button" parent="difficulties"]
 unique_name_in_owner = true
@@ -114,7 +114,7 @@ text = "Hard:
 - Sin Cos Tan &
 Csc Sec Cot
 - Angle can go past >360
-- 60 seconds"
+- 90 seconds"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

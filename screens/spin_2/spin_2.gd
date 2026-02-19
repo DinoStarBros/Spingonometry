@@ -38,9 +38,9 @@ var show_answer : bool = false
 const wheelRotVel_Range : Vector2 = Vector2(1000, 2000)
 const wheelRotAccelTime_Range : Vector2 = Vector2(1,2)
 const difficulty_times : Dictionary = {
-	"easy": 15.0,
-	"medium": 30.0,
-	"hard": 60.0
+	"easy": 30.0,
+	"medium": 60.0,
+	"hard": 90.0
 }
 
 func _ready() -> void:
